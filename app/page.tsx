@@ -5,10 +5,8 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="max-w-screen h-screen flex flex-col">
-      <Header />
+    <div className="max-w-screen h-full">
       <Hero />
-      <Footer />
     </div>
   );
 }

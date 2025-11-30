@@ -25,14 +25,14 @@
 }
 
 .logo1{
-  @apply animate-wiggle-more animate-infinite animate-normal;
+  @apply animate-wiggle-more animate-infinite animate-normal place-self-center;
 }
 .logo2{
-  @apply animate-wiggle-more animate-infinite animate-reverse;
+  @apply animate-wiggle-more animate-infinite animate-reverse place-self-center;
 }
 .logo3{
-  @apply animate-wiggle-more animate-infinite animate-alternate;
+  @apply animate-wiggle-more animate-infinite animate-alternate place-self-center;
 }
 .logo4{
-  @apply animate-wiggle-more animate-infinite animate-alternate-reverse;
+  @apply animate-wiggle-more animate-infinite animate-alternate-reverse place-self-center;
 }

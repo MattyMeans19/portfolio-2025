@@ -17,8 +17,8 @@ export default function Header(){
                     className="rounded-full"
                 />
                 </Link>
-                <h1 className="text-5xl text-(--primary) text-shadow-md text-shadow-black">Matthew <strong className="text-(--secondary)">Means</strong></h1>
-                <h2 className="place-self-end text-2xl text-(--tertiary) text-shadow-sm text-shadow-black">Full-Stack Developer</h2>
+                <h1 className="hidden md:block text-2xl lg:text-5xl text-(--primary) text-shadow-md text-shadow-black">Matthew <strong className="text-(--secondary)">Means</strong></h1>
+                <h2 className="hidden md:block place-self-end lg:text-2xl text-(--tertiary) text-shadow-sm text-shadow-black">Full-Stack Developer</h2>
             </div>
 
             <div className="md:flex md:items-center md:gap-12">
