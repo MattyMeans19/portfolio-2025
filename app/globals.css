@@ -1,26 +1,38 @@
 @import "tailwindcss";
+@import "tailwindcss-animated";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #12FF36;
+  --primary-dark: #27FF12;
+  --secondary: #FF931C;
+  --secondary-dark: #FF6800;
+  --tertiary: #7D746A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.hero-bg {
+    background: linear-gradient(143deg, #27ff12, #ff931c);
+    background-size: 400% 400%;
+
+    animation: AnimationName 15s ease infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes AnimationName {
+    0%{background-position:14% 0%}
+    50%{background-position:87% 100%}
+    100%{background-position:14% 0%}
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.logo1{
+  @apply animate-wiggle-more animate-infinite animate-normal;
+}
+.logo2{
+  @apply animate-wiggle-more animate-infinite animate-reverse;
+}
+.logo3{
+  @apply animate-wiggle-more animate-infinite animate-alternate;
+}
+.logo4{
+  @apply animate-wiggle-more animate-infinite animate-alternate-reverse;
 }
