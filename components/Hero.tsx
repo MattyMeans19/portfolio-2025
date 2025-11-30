@@ -21,12 +21,12 @@ export default function Hero(){
 
                 <div className=" mt-4 flex gap-4 sm:mt-6">
                     <Link className="inline-block rounded border border-(--tertiary) bg-(--primary) px-5 py-3 font-medium text-white shadow-md shadow-slate-600/45 
-                    transition-colors hover:bg-(--primary-dark) hover:text-gray-900 text-shadow-sm text-shadow-black" href="#">
+                    transition-colors hover:bg-(--primary-dark) hover:text-gray-900 text-shadow-sm text-shadow-black" href="/personal">
                     Small Business/Personal
                     </Link>
 
                     <Link className="inline-block rounded border border-(--tertiary) px-5 py-3 font-medium bg-(--secondary) text-white shadow-md shadow-slate-600/45 
-                    transition-colors hover:bg-(--secondary-dark) hover:text-gray-900 text-shadow-sm text-shadow-black" href="#">
+                    transition-colors hover:bg-(--secondary-dark) hover:text-gray-900 text-shadow-sm text-shadow-black" href="/enterprise">
                     Enterprise
                     </Link>
                 </div>
