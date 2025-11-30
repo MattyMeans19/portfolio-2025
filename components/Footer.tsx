@@ -14,7 +14,7 @@ export default function Footer(){
                     Enterprise
                 </Link>
                 <Link href="/personal" className="border border-(--tertiary) shadow-md shadow-slate-700 
-                    rounded-full place-content-center p-2">
+                    rounded-full place-content-center p-2 text-center">
                     Small Business/Personal
                 </Link>
             </div>
