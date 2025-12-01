@@ -1,7 +1,10 @@
-
+import SideMenu from "@/components/enterpirse/side-menu"
 
 export default function Enterprise(){
     return(
-        <h1>This is for companies looking to hire me on full-time</h1>
+            <div>
+                <h1>Title</h1>
+                <p>Info on subject</p>
+            </div>
     )
 }

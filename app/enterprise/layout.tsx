@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import "../globals.css";
+import SideMenu from "@/components/enterpirse/side-menu";
 
 export const metadata: Metadata = {
   title: "Matthew Means- Dev",
@@ -16,9 +15,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col h-screen relative">
-        <Header />
+        <SideMenu />
         {children}
-        <Footer />
       </body>
     </html>
   );
