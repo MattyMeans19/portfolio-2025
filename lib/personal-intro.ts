@@ -1,23 +1,47 @@
 import { Intro } from "./definitions"
 
-export const intro: Intro = 
+export const intro: Intro[] = [
     {
-       text: [
-        "Hey there, thanks for stopping by!", 
-        "You're on your way to a beautifully hand-crafted webpage",
-        "Whether it's for a local, small business",
-        "Or purely online as E-Commerce..",
-        "Perhaps you need a blog or forum",
-        "Or maybe, you just need a platform for your content",
-        "No matter what your needs, I've got you!"
-    ],
-        imageLink: [
-            "/Waving-hand.png",
-            "https://images.pexels.com/photos/270366/pexels-photo-270366.jpeg?_gl=1*r0edn4*_ga*MTMwMTQ4NTQxOC4xNzYzODcxMDYz*_ga_8JE65Q40S6*czE3NjQ0OTA5MjMkbzMkZzEkdDE3NjQ0OTExMDQkajM1JGwwJGgw",
-            "https://images.pexels.com/photos/2432221/pexels-photo-2432221.jpeg?_gl=1*180weo0*_ga*MTMwMTQ4NTQxOC4xNzYzODcxMDYz*_ga_8JE65Q40S6*czE3NjQ0OTA5MjMkbzMkZzEkdDE3NjQ0OTEyMTIkajU5JGwwJGgw",
-            "https://images.pexels.com/photos/6214470/pexels-photo-6214470.jpeg?_gl=1*10rg68d*_ga*MTMwMTQ4NTQxOC4xNzYzODcxMDYz*_ga_8JE65Q40S6*czE3NjQ0OTA5MjMkbzMkZzEkdDE3NjQ0OTEyOTEkajU5JGwwJGgw",
-            "/blog.jpg",
-            "https://images.pexels.com/photos/8100067/pexels-photo-8100067.jpeg?_gl=1*167gme2*_ga*MTMwMTQ4NTQxOC4xNzYzODcxMDYz*_ga_8JE65Q40S6*czE3NjQ0OTA5MjMkbzMkZzEkdDE3NjQ0OTE3MjUkajMyJGwwJGgw",
-            "/thumbs-up",
-        ]
-    } 
+    text: "Hey there, thanks for stopping by!",
+    imageLink: "/Waving-hand.png",
+    imageAlt: "Welcoming wave",
+    animation: "fade-right"
+    },
+    {
+    text: "You're on your way to a beautifully hand-crafted webpage",
+    imageLink: "/coding.jpeg",
+    imageAlt: "Lines of web development code",
+    animation: "fade-left place-self-end"
+    },
+    {
+    text: "Whether it's for a local, small business",
+    imageLink: "/openSign.jpeg",
+    imageAlt: "Small business open for service",
+    animation: "fade-right"
+    },
+    {
+    text: "Or purely online as E-Commerce..",
+    imageLink: "/ecommerce.jpeg",
+    imageAlt: "E-commerce representation",
+    animation: "fade-left place-self-end"
+    },
+    {
+    text: "Perhaps you need a blog or forum",
+    imageLink: "/blog.jpg",
+    imageAlt: "A blog site example",
+    animation: "fade-right"
+    },
+    {
+    text: "Or maybe, you just need a platform for your content",
+    imageLink: "/contentCreator.jpeg",
+    imageAlt: "A content creator busy at work",
+    animation: "fade-left place-self-end"
+    },
+    {
+    text: "No matter what your needs, I've got you!",
+    imageLink: "/thumbs-up.png",
+    imageAlt: "Thumbs up",
+    animation: "fade-right"
+    }
+    
+]

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tailwindcss-animated";
+@import "tailwindcss-intersect";
 
 :root {
   --background: #ffffff;
@@ -35,4 +36,12 @@
 }
 .logo4{
   @apply animate-wiggle-more animate-infinite animate-alternate-reverse place-self-center;
+}
+
+.fade-left{
+  @apply animate-fade-left animate-once animate-duration-1500 animate-ease-out;
+}
+
+.fade-right{
+  @apply animate-fade-right animate-once animate-duration-1500 animate-ease-out;
 }
