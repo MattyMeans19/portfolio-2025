@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Matthew Means- Dev",
-  description: "Web portfolio site for full-stack developer, Matthew Means.",
+  description: "Web portfolio site for full-stack developer, Matthew Means, from Farmington, NM USA.",
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex flex-col h-screen relative">
+      <body className="flex flex-col max-w-screen min-h-screen">
         <Header />
         {children}
         <Footer />

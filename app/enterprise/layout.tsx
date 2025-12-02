@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import SideMenu from "@/components/enterpirse/side-menu";
-
+import TopNav from "@/components/enterprise/top-nav";
 export const metadata: Metadata = {
   title: "Matthew Means- Dev",
   description: "Web portfolio site for full-stack developer, Matthew Means.",
@@ -13,11 +12,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="flex flex-col h-screen relative">
-        <SideMenu />
+      <div className="grow max-w-screen h-full flex flex-col">
+        <TopNav />
         {children}
-      </body>
-    </html>
+      </div>
   );
 }
