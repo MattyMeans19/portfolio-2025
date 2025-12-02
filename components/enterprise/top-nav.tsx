@@ -11,7 +11,7 @@ export default function TopNav(){
     }
 
     return(
-        <div className="border-b border-black px-2 w-screen">
+        <div className="border-b border-black px-2 w-full">
             <div role="tablist" className="flex">
                <Link href="/enterprise" role="tab" aria-selected="true" className={`border-2 border-transparent px-1 xl:px-6 py-2 font-semibold
                  hover:bg-(--primary) hover:text-white hover:text-shadow-md hover:text-shadow-black

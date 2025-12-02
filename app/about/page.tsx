@@ -3,8 +3,8 @@ import Image from "next/image"
 
 export default function About(){
     return(
-        <div className="grow hero-bg p-30">
-            <div className="flex flex-col place-items-center gap-4 p-15 bg-white border border-(--tertiary) rounded-3xl">
+        <div className="grow hero-bg p-5 xl:p-30">
+            <div className="flex flex-col place-items-center gap-4 p-5 lg:p-15 bg-white border border-(--tertiary) rounded-3xl">
                 <Image
                     src="/ME.jpg"
                     width={400}

@@ -3,8 +3,8 @@
 export default function PortfolioItem(){
     return(
         <section className="bg-white lg:grid xl:mx-15 lg:place-content-center rounded-3xl border border-(--tertiary)">
-            <div className="xl:mx-auto w-full xl:w-screen xl:max-w-7xl px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
-                <div className="xl:max-w-prose flex flex-col gap-5">
+            <div className="xl:mx-auto xl:w-screen xl:max-w-7xl px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
+                <div className="lg:max-w-prose flex flex-col gap-5 place-items-center">
                     <h1 className="text-2xl font-bold text-gray-900 lg:text-5xl">
                         Webpage Title
                     </h1>

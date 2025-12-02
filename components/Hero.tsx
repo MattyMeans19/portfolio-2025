@@ -3,7 +3,7 @@ import HeroImage from "./Hero-image";
 
 export default function Hero(){
     return(
-        <section className="hero-bg lg:grid h-full place-content-center">
+        <section className="lg:grid h-full place-content-center">
             <div className=" bg-white border lg:h-full place-content-center border-(--tertiary) rounded-3xl mx-auto max-w-7xl px-4 sm:px-6 sm:py-24
                 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 shadow-2xl shadow-slate-700">
                 <div className="max-w-prose text-left">

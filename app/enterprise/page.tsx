@@ -1,8 +1,8 @@
 
 export default function Enterprise(){
     return(
-        <section className="grow hero-bg max-w-screen p-5 lg:grid lg:place-content-center">
-            <div className="bg-white rounded-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32 xl:text-4xl text-center flex flex-col gap-5">
+        <section className="grow hero-bg max-w-screen p-5 lg:grid md:place-content-center">
+            <div className="bg-white rounded-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32 lg:text-2xl text-center flex flex-col gap-5">
                 <h1>Thank you for considering me for a position with your development team!</h1>
                 <p>
                     I'm a Dedicated <strong className="text-(--secondary) text-shadow-md text-shadow-black">Full-Stack</strong> Developer focused on building high-performance, scalable web applications. 
