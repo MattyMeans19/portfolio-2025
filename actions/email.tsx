@@ -44,7 +44,3 @@ export async function Email(formState: FormState, formData: FormData){
         return {message: "Something went wrong, message not sent!"}
     }
 }
-
-async function AutoResponse(){
-
-}
