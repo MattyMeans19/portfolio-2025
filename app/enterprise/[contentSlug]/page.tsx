@@ -1,16 +1,24 @@
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
-
+import Frontend from "@/components/enterprise/Frontend";
+import Backend from "@/components/enterprise/Backend";
+import Misc from "@/components/enterprise/Misc";
 
 
 export default async function PostDetails({params}: {params: {contentSlug: string}}){
     const {contentSlug} = await params;
 
-    if(contentSlug === "Frontend" || contentSlug === "Backend" || contentSlug === "Misc"){
+    if(contentSlug === "Frontend"){
         return(
-            <h1>{contentSlug}</h1>
+            <Frontend />
         ) 
-    } else{
+    } else if(contentSlug === "Backend"){
+        return(
+            <Backend />
+        )
+    } else if(contentSlug === "Misc"){
+        <Misc />
+    }
+     else{
         notFound();
     }
     

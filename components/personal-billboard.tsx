@@ -10,7 +10,7 @@ export default function Billboard(){
                   to send me an email with all the information I'll need to build you a fabulous webpage!
                   If you're still not sure what you'll need feel free to still contact me with any questions you have!
               </p>
-              <div className="text-center flex flex-col boxShadow">
+              <div className="text-center flex flex-col">
                   <span className="md:text-3xl underline">Curious about what's under the hood?</span>
                   <span className="md:text-2xl">Follow these links to inspect what makes these wonderful sites work!</span>
                   <ul className="grid grid-cols-2 gap-2 md:text-2xl">
