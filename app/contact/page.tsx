@@ -1,15 +1,22 @@
+'use client';
+
+import { Email } from "@/actions/email"
+import { useActionState } from "react"
 
 export default function Contact(){
+
+    const [emailState, formAction] = useActionState(Email, undefined)
+
     return(
         <div className="grow hero-bg place-content-center space-y-10">
-            <p className="text-center text-3xl text-(--secondary) text-shadow-md text-shadow-black">Feel free to contact me anytime!</p>
-            <form action="#" className="mx-auto grid max-w-2xl grid-cols-1 gap-4 rounded-lg border border-gray-300 bg-gray-100 p-6 sm:grid-cols-2">
+            <p className="text-center text-3xl boldText-secondary">Feel free to contact me anytime!</p>
+            <form action={formAction} className="mx-auto grid max-w-2xl grid-cols-1 gap-4 rounded-lg border border-gray-300 bg-gray-100 p-6 sm:grid-cols-2 boxShadow">
                 <div className="md:col-span-2">
                     <label className="block text-sm lg:text-2xl font-medium text-gray-900" htmlFor="name">
                         Name<strong className="text-red-600 text-sm">*</strong></label>
 
                     <input className="mt-1 w-full rounded-lg bg-white p-2 focus:border-indigo-500 focus:outline" 
-                    id="name" type="text" placeholder="Your name" required/>
+                    id="name" name="name" type="text" placeholder="Your name" required/>
                 </div>
 
                 <div>
@@ -17,14 +24,14 @@ export default function Contact(){
                         Email<strong className="text-red-600 text-sm">*</strong></label>
 
                     <input className="mt-1 w-full rounded-lg bg-white p-2 focus:border-indigo-500 focus:outline" 
-                    id="email" type="email" placeholder="Your email" required/>
+                    id="email" name="email" type="email" placeholder="Your email" required/>
                 </div>
 
                 <div>
                     <label className="block text-sm lg:text-2xl font-medium text-gray-900" htmlFor="phone">Phone</label>
 
                     <input className="mt-1 w-full rounded-lg bg-white p-2 focus:border-indigo-500 focus:outline" 
-                    id="phone" type="tel" placeholder="Your phone"/>
+                    id="phone" name="phone" type="tel" placeholder="Your phone"/>
                 </div>
 
                 <div className="md:col-span-2">
@@ -32,7 +39,7 @@ export default function Contact(){
                         Message<strong className="text-red-600 text-sm">*</strong></label>
 
                     <textarea className="mt-1 w-full resize-none rounded-lg bg-white p-2 focus:border-indigo-500" 
-                    id="message" rows={4} placeholder="Your message" required></textarea>
+                    id="message" name="message" rows={4} placeholder="Your message" required></textarea>
                 </div>
 
                 <div className="md:col-span-2">
@@ -41,7 +48,8 @@ export default function Contact(){
                     Send Message
                     </button>
                 </div>
-            </form>   
+                {emailState?.message && <strong className="boldText-primary text-center col-span-full">{emailState.message}</strong>}
+            </form>  
         </div>
         
     )
