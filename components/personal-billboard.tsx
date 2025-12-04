@@ -15,37 +15,37 @@ export default function Billboard(){
                   <span className="md:text-2xl">Follow these links to inspect what makes these wonderful sites work!</span>
                   <ul className="grid grid-cols-2 gap-2 md:text-2xl">
                       <li>
-                          <Link href="#" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
+                          <Link href="/enterprise/Frontend/TailwindCSS" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
                           <strong className="boldText-primary">TailwindCSS: </strong>
                           Framework for styling, themes, and layout
                           </Link>
                       </li>
                       <li>
-                          <Link href="#" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
+                          <Link href="/enterprise/Frontend/React" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
                           <strong className="boldText-primary">React: </strong>
                           Front-End framework for UI/UX
                           </Link>
                       </li>
                       <li>
-                          <Link href="#" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
+                          <Link href="/enterprise/Misc/Next.JS" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
                           <strong className="boldText-primary">Next.JS: </strong>
                           Framework that adds on to React for various features
                           </Link>
                       </li>
                       <li>
-                          <Link href="#" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
+                          <Link href="/enterprise/Backend/Express.JS" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
                           <strong className="boldText-primary">Express.JS: </strong>
                           Back-end framework for fetching data
                           </Link>
                         </li>
                       <li>
-                          <Link href="#" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
+                          <Link href="/enterprise/Backend/PostgreSQL" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
                           <strong className="boldText-primary">PostgreSQL</strong>
                           Database management for storing data
                           </Link>
                       </li>
                       <li>
-                          <Link href="#" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
+                          <Link href="/enterprise/Misc/TypeScript" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
                           <strong className="boldText-primary">TypeScript</strong>
                           Built-in error checking
                           </Link>

@@ -9,14 +9,23 @@ export default async function PostDetails({params}: {params: {contentSlug: strin
 
     if(contentSlug === "Frontend"){
         return(
-            <Frontend />
+            <Frontend 
+                display="Intro"
+            />
         ) 
     } else if(contentSlug === "Backend"){
         return(
-            <Backend />
+            <Backend 
+                display="Intro"
+            />
         )
     } else if(contentSlug === "Misc"){
-        <Misc />
+        return(
+            <Misc 
+                display="Intro"
+            />   
+        )
+        
     }
      else{
         notFound();

@@ -27,3 +27,10 @@ export type FormState =
     description: string,
     repo: string
   }
+
+  export type Content=
+  {
+    name: string,
+    img: string,
+    data: string
+  }
