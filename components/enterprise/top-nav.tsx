@@ -12,12 +12,19 @@ export default function TopNav(){
     }
 
     useEffect(() =>{
-        const tabView = window.location.pathname.includes(currentTab);
-
-        if(!tabView){
-            updateTab(currentTab)
-        } else if(currentTab === ""){
-            updateTab(window.location.pathname)
+        const currentPath = window.location.pathname;
+        const path1 = "/Frontend";
+        const path2 = "/Backend";
+        const path3 = "/Misc"
+    
+        if(currentPath.includes(path1)){
+            updateTab("/enterprise/Frontend");
+        } else if(currentPath.includes(path2)){
+            updateTab("/enterprise/Backend");
+        } else if(currentPath.includes(path3)){
+            updateTab("/enterprise/Misc");
+        } else{
+            updateTab("/enterprise");
         }
 
     }, [])
