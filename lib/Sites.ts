@@ -5,7 +5,7 @@ export const sites: Site[] = [
         name: "All Keyboard Shortcuts",
         url: "https://allkeyboardshortcuts.info",
         image: "/allkeyboardshortcuts.png",
-        description: "A reference for shortcuts across OS and apps. Built with React + Vite, and styled with TailwindCSS. Provides quick, filterable lists for productivity.",
+        description: "A reference for shortcuts across OS and apps. Built with React + Vite, and styled with TailwindCSS. Provides quick lists for productivity.",
         repo: "https://github.com/MattyMeans19/all-keyboard-shortcuts.git"
     },
     {
