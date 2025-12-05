@@ -31,6 +31,7 @@ export type FormState =
   export type Content=
   {
     name: string,
-    img: string,
-    data: string
+    img: string[],
+    data: string,
+    iframe: string | null
   }

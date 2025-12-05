@@ -1,7 +1,6 @@
 'use client';
 
 import Link from "next/link";
-import path from "path";
 import { useEffect, useState } from "react";
 
 export default function TopNav(){

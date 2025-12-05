@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 export default async function SkillData({params}: {params: {dataSlug: string}}){
         const {dataSlug} = await params;
 
-        if(dataSlug === "TailwindCSS" || dataSlug === "Other-Styling" || dataSlug === "EJS" || dataSlug === "React"){
+        if(dataSlug === "TailwindCSS" || dataSlug === "Other-Styling" || dataSlug === "Next.JS" || dataSlug === "React"){
             return(
                 <Frontend 
                     display={dataSlug}
@@ -18,7 +18,7 @@ export default async function SkillData({params}: {params: {dataSlug: string}}){
                     display={dataSlug}
                 />
             )
-        }  else if(dataSlug === "Next.JS" || dataSlug === "TypeScript"){
+        }  else if(dataSlug === "EJS" || dataSlug === "TypeScript"){
             return(
                 <Misc 
                     display={dataSlug}

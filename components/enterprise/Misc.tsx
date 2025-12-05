@@ -14,8 +14,8 @@ export default function Misc(props: Display){
         <div className="grow xl:grid grid-cols-8">
             <div className="col-span-1 border-e">
                 <ul className="p-5 flex xl:flex-col gap-10 2xl:text-2xl boldText-primary">
-                    <li className={`${props.display === "Next.JS" ? 'boldText-primary' : 'boldText-secondary'}`}>
-                        <Link href="/enterprise/Misc/Next.JS">Next.JS</Link></li>
+                    <li className={`${props.display === "EJS" ? 'boldText-primary' : 'boldText-secondary'}`}>
+                        <Link href="/enterprise/Misc/EJS">EJS</Link></li>
                     <li className={`${props.display === "TypeScript" ? 'boldText-primary' : 'boldText-secondary'}`}>
                         <Link href="/enterprise/Misc/TypeScript">TypeScript</Link></li>
                 </ul>
