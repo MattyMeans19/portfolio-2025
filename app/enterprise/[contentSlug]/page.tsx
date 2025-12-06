@@ -4,7 +4,7 @@ import Backend from "@/components/enterprise/Backend";
 import Misc from "@/components/enterprise/Misc";
 
 
-export default async function PostDetails({params}: {params: {contentSlug: string}}){
+export default async function Skills({params}: {params: {contentSlug: string}}){
     const {contentSlug} = await params;
 
     if(contentSlug === "Frontend"){
