@@ -12,7 +12,7 @@ export default function Billboard(){
               </p>
               <div className="text-center flex flex-col">
                   <span className="md:text-3xl underline">Curious about what's under the hood?</span>
-                  <span className="md:text-2xl">Follow these links and click the Github Repo url to inspect what makes these wonderful sites work !</span>
+                  <span className="md:text-2xl">Follow these links to see a description of the components that make these wonderful sites work !</span>
                   <ul className="grid grid-cols-2 gap-2 md:text-2xl">
                       <li>
                           <Link href="/enterprise/Frontend/TailwindCSS" className="p-5 flex flex-col text-center bg-white hover:bg-gray-400/10 rounded-2xl border-b-2 size-full place-self-center">
