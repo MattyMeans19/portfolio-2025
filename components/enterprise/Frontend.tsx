@@ -30,7 +30,7 @@ export default function Frontend(props: Display){
                 <h1 className="text-4xl">{data[0].title}</h1>
                 <p className="md:text-2xl">{data[0].description}</p>
                 <h2 className="text-2xl text-center"><strong className={`${data[0].exampleSite != "" ? 'boldText-primary' : 'hidden'}`}>Example site:</strong> {data[0].exampleSite}</h2>
-                {data[0].url ? <a href={data[0].url} className="text-2xl text-blue-500">Visit Site</a> : null}
+                {data[0].url ? <a href={data[0].url} className="text-2xl text-blue-500" target="_blank">Visit Site</a> : null}
                 <h2 className="text-2xl">Link to Github Repo:</h2>
                 <a href={data[0].siteRepo} className="break-all boldText-secondary md:text-2xl" target="_blank">{data[0].siteRepo}</a>
             </div>
