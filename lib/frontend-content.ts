@@ -3,7 +3,7 @@ import { Content } from "./definitions"
 export const frontendData: Content[] = [
     {
         title: "Intro",
-        description: "The skill set I have compiled here represent my knowledge and abilites in Front-end application of web development. Please feel free to check out the github repo for this website, as it utilizes many of these skills.",
+        description: "Showcased here are the Front-end web development skills that I actively utilized in building this website and others. The full source code is available in the GitHub repository for your review.",
         exampleSite: "",
         url: "",
         siteRepo: "https://github.com/MattyMeans19/portfolio-2025.git"
@@ -11,7 +11,7 @@ export const frontendData: Content[] = [
         {
         title: "TailwindCSS",
         description: "Advanced Utility-First Styling: Expertly implement and manage responsive, component-driven UIs using Tailwind's utility classes (e.g., flex, grid, responsive variants). Custom Configuration & Themability: Utilize the @apply directive to create reusable, custom CSS utility classes and manage design tokens using CSS variables for robust theming.",
-        exampleSite: "This Portfolio Website is a great display of my Tailwind knowledge and capabilities!",
+        exampleSite: "This Portfolio Website and most of my other example pages are a great display of my Tailwind knowledge and capabilities!",
         url: "",
         siteRepo: "https://github.com/MattyMeans19/portfolio-2025.git"
     },

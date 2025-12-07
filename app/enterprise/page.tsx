@@ -21,7 +21,8 @@ export default function Enterprise(){
                 </p>
                 <p>
                     This portfolio presents a compilation of in-depth projects designed to showcase my understanding of development 
-                    principles, architectural best practices, and commitment to delivering clean, maintainable code.
+                    principles, architectural best practices, and commitment to delivering clean, maintainable code. Each section will provide a 
+                    summary of the skill set and relevent project links and Github repositories.
                 </p>
             </div>
         </section>

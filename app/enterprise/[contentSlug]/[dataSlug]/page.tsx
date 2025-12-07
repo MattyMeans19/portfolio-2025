@@ -18,7 +18,7 @@ export default async function SkillData({params}: {params: {dataSlug: string}}){
                     display={dataSlug}
                 />
             )
-        }  else if(dataSlug === "EJS" || dataSlug === "TypeScript"){
+        }  else if(dataSlug === "EJS" || dataSlug === "TypeScript" || dataSlug === "Authentication-Security"){
             return(
                 <Misc 
                     display={dataSlug}

@@ -16,7 +16,7 @@ export default function Frontend(props: Display){
                 <ul className="p-5 flex xl:flex-col place-content-center gap-10 2xl:text-2xl boldText-primary">
                     <li className={`${props.display === "TailwindCSS" ? 'boldText-primary' : 'boldText-secondary'}`}>
                         <Link href="/enterprise/Frontend/TailwindCSS">TailwindCSS</Link></li>
-                    <li className={`${props.display === "Other-Styling" ? 'boldText-primary' : 'boldText-secondary'}`}>
+                    <li className={`${props.display === "Other-Styling" ? 'boldText-primary' : 'boldText-secondary'} text-center xl:text-start`}>
                         <Link href="/enterprise/Frontend/Other-Styling">Other Styling</Link></li>
                     <li className={`${props.display === "React" ? 'boldText-primary' : 'boldText-secondary'}`}>
                         <Link href="/enterprise/Frontend/React">React</Link></li>
@@ -25,14 +25,14 @@ export default function Frontend(props: Display){
                 </ul>
             </div>
 
-            <div className="grow bg-white w-[80%] h-[80%] border border-(--tertiary) rounded-4xl my-10 place-self-center col-span-7 place-items-center 
-                p-15 flex flex-col justify-around boxShadow">
+            <div className="grow bg-white w-[80%] h-[80%] border-10 border-double border-(--tertiary) rounded-4xl my-10 place-self-center col-span-7 place-items-center 
+                p-15 flex flex-col gap-15 justify-around boxShadow">
                 <h1 className="text-4xl">{data[0].title}</h1>
-                <p className="text-2xl">{data[0].description}</p>
-                <h2 className="text-2xl text-center"><strong className="boldText-primary">Example site:</strong> {data[0].exampleSite}</h2>
+                <p className="md:text-2xl">{data[0].description}</p>
+                <h2 className="text-2xl text-center"><strong className={`${data[0].exampleSite != "" ? 'boldText-primary' : 'hidden'}`}>Example site:</strong> {data[0].exampleSite}</h2>
                 {data[0].url ? <a href={data[0].url} className="text-2xl text-blue-500">Visit Site</a> : null}
-                <h2 className="text-2xl">Check out the code at my Github Repo:</h2>
-                <a href={data[0].siteRepo} className="boldText-secondary text-2xl">{data[0].siteRepo}</a>
+                <h2 className="text-2xl">Link to Github Repo:</h2>
+                <a href={data[0].siteRepo} className="break-all boldText-secondary md:text-2xl" target="_blank">{data[0].siteRepo}</a>
             </div>
                 
         </div>

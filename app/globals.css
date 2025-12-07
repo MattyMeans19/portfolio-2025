@@ -11,6 +11,12 @@
   --tertiary: #7D746A;
 }
 
+.anta-regular {
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .hero-bg {
     background: linear-gradient(143deg, #27ff12, #ff931c);
     background-size: 400% 400%;

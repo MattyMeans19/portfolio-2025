@@ -7,7 +7,7 @@ export default function PortfolioItem(props: Site){
         <section  className="bg-white lg:grid xl:mx-15 lg:place-content-center rounded-3xl border border-(--tertiary) boxShadow">
             <div className="2xl:mx-auto 2xl:w-screen xl:max-w-7xl px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
                 <div className="lg:max-w-prose flex flex-col gap-10 place-items-center">
-                    <h1 className="text-2xl font-bold boldText-primary 2xl:text-5xl">
+                    <h1 className="text-2xl font-bold boldText-primary 2xl:text-5xl text-center">
                         {props.name}
                     </h1>
                     <a href={props.url} target="_blank" className="2xl:text-2xl text-center text-sky-600">{props.url}</a>
