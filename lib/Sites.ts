@@ -12,7 +12,7 @@ export const sites: Site[] = [
         name: "Small Business Template",
         url: "https://smallbusiness-p-e6a955b1be25.herokuapp.com/",
         image: "/SBtemplate.png",
-        description: "Full-stack template featuring live inventory and cart reservations. Front-end: React/Vite & TailwindCSS. Back-end: Express.js & PostgreSQL.  Add '/business-portal' to view business end!",
+        description: "Full-stack template featuring live inventory and cart reservations. Front-end: React/Vite & TailwindCSS. Back-end: Express.js & PostgreSQL.  Add '/business-portal' to view business end, Login using 'Admin' for the username and password!",
         repo:"https://github.com/MattyMeans19/small-business-premium.git"
     },
     {
