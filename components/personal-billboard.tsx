@@ -6,7 +6,7 @@ export default function Billboard(){
         <div className="w-full flex flex-col gap-20 md:gap-0 md:grid grid-cols-2 bg-white rounded-2xl p-5 boxShadow">
               <p className="border-b-2 md:p-15 md:border-b-0 md:text-3xl text-center place-content-center">
                   Like what you see and ready to place your project in my capable hands?
-                  Head on over to the <Link href="#"><strong className="boldText-secondary">Contact</strong></Link> page
+                  Head on over to the <Link href="/contact"><strong className="boldText-secondary">Contact</strong></Link> page
                   to send me an email with all the information I'll need to build you a fabulous webpage!
                   If you're still not sure what you'll need feel free to still contact me with any questions you have!
               </p>
