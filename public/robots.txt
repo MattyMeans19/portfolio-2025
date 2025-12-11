@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://matthew-means.dev
+
+# Sitemaps
+Sitemap: https://matthew-means.dev/sitemap.xml
