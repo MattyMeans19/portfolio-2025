@@ -7,7 +7,8 @@ import {Anta} from 'next/font/google';
 
 export const metadata: Metadata = {
   title: "Matthew Means- Dev",
-  description: "Web portfolio site for full-stack developer, Matthew Means, from Farmington, NM USA.",
+  description: `Full-Stack Web Developer, Matthew Means. Located in Farmington, NM. Qaulity web design, for affordable prices. Servicing small businesses,
+  e-commerce, hobbyists, bloggers, and more!`,
 };
 
 const anta = Anta({
