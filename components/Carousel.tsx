@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ShopifyLogo from "@/public/logos/shopify.png"
 import WPLogo from "@/public/logos/WordPress.png"
 import MyLogo from "@/public/BrandTag.png"
@@ -112,8 +112,23 @@ export default function Carousel() {
 
   const currentSlide = SLIDES.find(s => s.id === item);
 
+  const [isVisible, setVisibility] = useState(false)
+
+useEffect(() => {
+    // 1. Set the timer
+    const visibilityTimer = setTimeout(() => {
+      setVisibility(true);
+    }, 3700);
+
+    // 2. Return a cleanup function
+    return () => clearTimeout(visibilityTimer);
+  }, []);
+
   return (
-    <div className="grow h-full relative bg-white w-[85vw] m-7.5 rounded-2xl border flex flex-col overflow-hidden shadow-sm">
+    <>
+    {isVisible && (
+    <div className="grow h-full my-5 relative bg-white w-[85vw] mx-7.5 rounded-2xl border flex flex-col overflow-hidden shadow-sm 
+                    animate-fade-down animate-once animate-duration-1000 animate-ease-linear">
             {/* Integrated Navigation Bar */}
       <div className="flex items-center justify-center lg:gap-6 pb-12 mt-5">
         {/* Prev Button */}
@@ -151,7 +166,7 @@ export default function Carousel() {
       </div>
 
       {/* Main Content Area */}
-      <div className="grow p-5 w-full flex flex-col items-center justify-center gap-10">
+      <div className="p-5 w-full h-full flex flex-col items-center justify-center gap-10">
         {/* Header Section */}
         <div className="text-center w-full max-w-4xl border-b-8 border-double border-slate-100 pb-6">
           <h2 className="text-2xl md:text-3xl text-pretty text-gray-700 font-medium">
@@ -162,7 +177,8 @@ export default function Carousel() {
         {/* Visual/Type Switcher */}
         <div className="flex-1 w-full flex items-center justify-center">
           {currentSlide?.isCTA ? (
-            <div className="animate-in fade-in zoom-in duration-500 mb-5">
+            <div className="animate-in fade-in zoom-in duration-500 mb-5 flex flex-col place-items-center gap-20">
+              <p className="text-4xl text-center">Head on over to the Showroom, an interactive page that will let you experience each template in action!</p>
               <Link href="/showroom" className="bg-green-600 hover:bg-green-700 text-white md:text-2xl font-black px-12 py-6 rounded-full shadow-2xl transition-all hover:scale-105">
                 Enter the Showroom →
               </Link>
@@ -170,18 +186,18 @@ export default function Carousel() {
           ) : currentSlide?.type === "comparison" ? (
             <div className="grid grid-cols-3 w-full max-w-2xl items-center gap-5 md:gap-10 animate-in fade-in duration-500">
               <div className="flex flex-col gap-6 justify-center items-end col-start-1">
-                <Image src={ShopifyLogo} alt="Shopify" width={100} height={100} className="w-12 h-12 lg:w-full lg:h-full object-contain" />
-                <Image src={WPLogo} alt="WordPress" width={100} height={100} className="w-12 h-12 lg:w-full lg:h-full object-contain" />
+                <Image src={ShopifyLogo} alt="Shopify" width={100} height={100} className="size-full lg:w-full lg:h-full object-contain" />
+                <Image src={WPLogo} alt="WordPress" width={100} height={100} className="size-full lg:w-full lg:h-full object-contain" />
               </div>
               <p className="col-start-2 font-black text-center text-4xl text-red-600 italic">VS</p>
               <div className="col-start-3 flex justify-start">
-                <Image src={MyLogo} alt="My Brand" width={300} height={300} className="w-16 h-16 lg:w-full lg:h-full rounded-full border-4 border-green-500 shadow-lg" />
+                <Image src={MyLogo} alt="My Brand" width={300} height={300} className="size-full lg:w-full lg:h-full rounded-full border-4 border-green-500 shadow-lg" />
               </div>
             </div>
           ) : currentSlide?.visual ? (
             <div className="flex flex-col items-center gap-6 animate-in fade-in zoom-in duration-500 h-full w-full">
               <p className="text-2xl font-bold text-slate-600 underline uppercase tracking-[0.2em] text-center">{currentSlide.title}</p>
-              <span className="text-8xl lg:text-9xl drop-shadow-md">{currentSlide.visual}</span>
+              <span className="text-8xl lg:text-9xl drop-shadow-md w-full">{currentSlide.visual}</span>
             </div>
           ) : null}
         </div>
@@ -191,51 +207,51 @@ export default function Carousel() {
     {currentSlide?.type === "startup_costs" && (
     <div className="w-full h-full flex flex-col justify-center px-6 lg:px-12 animate-in fade-in duration-500">
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-5">
-        {/* Competitor: The "Hidden" Cost */}
-        <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-            <h4 className="text-base font-bold text-slate-500 mb-4 uppercase">Shopify / WP</h4>
-            <div className="text-3xl font-black text-red-500 mb-6">$950 - $2,500+</div>
-            
-            <div className="space-y-4 text-xs text-slate-600">
-            <div className="flex justify-between border-b border-slate-200 pb-2 text-lg">
-                <span>Theme & Plugins</span> <span>$350+</span>
-            </div>
-            <div className="flex justify-between border-b text-lg border-slate-200 pb-2">
-                <span>Hidden Fee Examples</span> 
-            </div>
-            <ul className="text-xl text-slate-400 space-y-1 list-disc pl-4">
-                <li>2% Extra Transaction Fees</li>
-                <li>Premium App Subscriptions</li>
-                <li>Backup/Security Upgrades</li>
-                <li>Theme Licensing</li>
-            </ul>
-            </div>
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Competitor: The "Hidden" Cost */}
+          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+              <h4 className="text-base font-bold text-slate-500 mb-4 uppercase">Shopify / WP</h4>
+              <div className="text-3xl font-black text-red-500 mb-6">$950 - $2,500+</div>
+              
+              <div className="space-y-4 text-xs text-slate-600">
+              <div className="flex justify-between border-b border-slate-200 pb-2 text-lg">
+                  <span>Theme & Plugins</span> <span>$350+</span>
+              </div>
+              <div className="flex justify-between border-b text-lg border-slate-200 pb-2">
+                  <span>Hidden Fee Examples</span> 
+              </div>
+              <ul className="text-xl text-slate-400 space-y-1 list-disc pl-4">
+                  <li>2% Extra Transaction Fees</li>
+                  <li>Premium App Subscriptions</li>
+                  <li>Backup/Security Upgrades</li>
+                  <li>Theme Licensing</li>
+              </ul>
+              </div>
+          </div>
 
-        {/* Standard Tier */}
-        <div className="bg-white p-6 rounded-2xl border-2 border-slate-300 flex flex-col justify-between">
-            <h4 className="text-base font-bold text-slate-700 mb-4">My Standard Tier</h4>
-            <div className="text-3xl font-black text-slate-800">$499</div>
-            <p className="text-md text-slate-500 mt-2 font-medium">Flat Fee (Setup Included)</p>
-            <p className="text-sm text-slate-400 mt-6 italic">No plugins needed. No theme taxes. No hidden setup labor.</p>
-        </div>
+          {/* Standard Tier */}
+          <div className="bg-white p-6 rounded-2xl border-2 border-slate-300 flex flex-col justify-between">
+              <h4 className="text-base font-bold text-slate-700 mb-4">My Standard Tier</h4>
+              <div className="text-3xl font-black text-slate-800">$499</div>
+              <p className="text-md text-slate-500 mt-2 font-medium">Flat Fee (Setup Included)</p>
+              <p className="text-sm text-slate-400 mt-6 italic">No plugins needed. No theme taxes. No hidden setup labor.</p>
+          </div>
 
-        {/* Premium Tier */}
-        <div className="bg-green-50 p-6 rounded-2xl border-2 border-green-500 flex flex-col justify-between">
-            <h4 className="text-base font-bold text-green-700 mb-4">My Premium Tier</h4>
-            <div className="text-3xl font-black text-green-700">$999</div>
-            <p className="text-md text-green-800 mt-2 font-medium">Flat Fee (Transactional)</p>
-            <p className="text-sm text-green-700 mt-6 italic tracking-wide">Includes Stripe Setup & Order Management</p>
-            <p className="text-sm text-red-500">*Integration of a Payment Service Provider other than <strong className="text-green-700">Stripe</strong> will incur an additional fee up to $500*</p>
-        </div>
+          {/* Premium Tier */}
+          <div className="bg-green-50 p-6 rounded-2xl border-2 border-green-500 flex flex-col justify-between">
+              <h4 className="text-base font-bold text-green-700 mb-4">My Premium Tier</h4>
+              <div className="text-3xl font-black text-green-700">$999</div>
+              <p className="text-md text-green-800 mt-2 font-medium">Flat Fee (Transactional)</p>
+              <p className="text-sm text-green-700 mt-6 italic tracking-wide">Includes Stripe Setup & Order Management</p>
+              <p className="text-sm text-red-500">*Integration of a Payment Service Provider other than <strong className="text-green-700">Stripe</strong> will incur an additional fee up to $500*</p>
+          </div>
         </div>
     </div>
     )}
 
     {/* Slide 8: Monthly Managed Costs */}
     {currentSlide?.type === "maintenance" && (
-    <div className="grid grid-cols-1 md:grid-cols-2 mb-5 gap-6 w-full h-full place-items-center px-5 animate-in fade-in">
+    <div className="flex flex-col mb-5 gap-6 w-full h-full place-items-center px-5 animate-in fade-in">
         
         {/* Standard Comparison */}
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm w-full h-full">
@@ -267,7 +283,7 @@ export default function Carousel() {
 
     {/* Slide 9: Standard vs. Premium Tiers */}
     {currentSlide?.type === "features" && (
-    <div className="w-full max-w-5xl mx-auto mb-5 grid grid-cols-1 md:grid-cols-2 gap-8 px-4 h-full">
+    <div className="w-full max-w-5xl mx-auto mb-5 flex flex-col gap-8 px-4 h-full">
         
         {/* Standard Tier */}
         <div className="border border-slate-200 p-8 rounded-2xl bg-white shadow-sm flex flex-col h-full">
@@ -298,9 +314,9 @@ export default function Carousel() {
 
     {/* Slide 10: The Modular Advantage */}
     {currentSlide?.type === "modular" && (
-    <div className="w-full h-full text-center animate-in fade-in flex flex-col items-center">
+    <div className="w-full h-full text-center animate-in fade-in flex flex-col gap-10 items-center">
         <h3 className="text-2xl font-bold text-slate-800 mb-6">Your Business, Your Rules</h3>
-        <p className="text-slate-600 mb-10 px-4 text-lg">
+        <p className="grow text-slate-600 mb-10 px-4 text-lg">
         Every store I build is a modular engine. You start with exactly what you need today, and we "plug in" new capabilities—like loyalty programs or delivery integration—without ever needing to rebuild your store.
         </p>
         
@@ -313,7 +329,10 @@ export default function Carousel() {
         ))}
         </div>
         
-        <p className="mt-10 text-md text-slate-400 italic">
+        <div>
+          
+        </div>
+        <p className="text-md text-slate-400 italic">
             Add functionality with no hassle as your business requirements evolve.
         </p>
         <p className="text-sm text-red-500">*Choosing to integrate add-ons will incur additional start-up and monthly fees*</p>
@@ -326,5 +345,7 @@ export default function Carousel() {
     )}
 
     </div>
+    )}
+    </>
   )
 }

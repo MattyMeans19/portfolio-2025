@@ -8,7 +8,7 @@ import MyLogo from "@/public/BrandTag.png"
 
 export default function PerformanceRace() {
   return (
-    <div className="relative w-full h-fit place-self-center bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden p-6 flex flex-col justify-between">
+    <div className="relative w-full bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden p-6 flex flex-col justify-between">
       
       {/* Competitors Track */}
       <motion.div

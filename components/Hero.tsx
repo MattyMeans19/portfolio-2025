@@ -1,9 +1,26 @@
-import Link from "next/link";
+'use client'
+
+import { useEffect, useState } from "react";
 import HeroImage from "./Hero-image";
 
 export default function Hero(){
+    const [isVisible, setVisibility] = useState(true)
+
+useEffect(() => {
+    // 1. Set the timer
+    const visibilityTimer = setTimeout(() => {
+      setVisibility(false);
+    }, 3700);
+
+    // 2. Return a cleanup function
+    return () => clearTimeout(visibilityTimer);
+  }, []);
+    
     return(
-        <section className="lg:grid h-full place-content-center mt-5">
+        <>
+        {isVisible && (
+        <div className="lg:grid h-full place-content-center mt-5 animate-fade-down animate-once 
+        animate-duration-1000 animate-delay-3000 animate-ease-linear animate-reverse">
             <div className=" bg-white border lg:h-full place-content-center border-(--tertiary) rounded-3xl mx-auto max-w-7xl px-4 sm:px-6 sm:py-24
                 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 boxShadow">
                 <div className="max-w-prose text-left">
@@ -24,6 +41,8 @@ export default function Hero(){
                     <HeroImage />
                 </div>
             </div>
-        </section>
+        </div>
+    )}
+    </>
     )
 }
