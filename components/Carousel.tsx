@@ -6,6 +6,11 @@ import ShopifyLogo from "@/public/logos/shopify.png"
 import WPLogo from "@/public/logos/WordPress.png"
 import MyLogo from "@/public/BrandTag.png"
 import PerformanceRace from "./performance";
+import ownership from "@/public/ownership.png"
+import scaleability from "@/public/scalability.png"
+import security from "@/public/security.png"
+import ROI from "@/public/ROI.png"
+import Link from "next/link";
 
 const SLIDES = [
   {
@@ -18,7 +23,13 @@ const SLIDES = [
     id: 2,
     title: "Ownership",
     text: "Stop paying 'digital rent.' When I build your app, you own the code and the data—no monthly subscription fees or platform lock-in.",
-    visual: "🏠" 
+    visual:      <Image 
+                  src={ownership} 
+                  alt="My Brand" 
+                  width={960} 
+                  height={1088} 
+                  className="size-100 lg:size-200 place-self-center border-green-500 border shadow-2xl shadow-slate-300" 
+                />
   },
   {
     id: 3,
@@ -30,19 +41,37 @@ const SLIDES = [
     id: 4,
     title: "Scalability",
     text: "Don't bend your business to fit a template. I build custom features—like unique inventory systems—that standard plugins can't handle.",
-    visual: "🛠️"
+    visual:     <Image 
+                  src={scaleability} 
+                  alt="My Brand" 
+                  width={960} 
+                  height={1088} 
+                  className="size-100 lg:size-200 place-self-center border-green-500 border shadow-2xl shadow-slate-300" 
+                />
   },
   {
     id: 5,
     title: "Security",
     text: "Generic platforms are frequent targets for exploits. A custom architecture minimizes your attack surface and keeps customer data locked down.",
-    visual: "🛡️"
+    visual:     <Image 
+                  src={security} 
+                  alt="My Brand" 
+                  width={960} 
+                  height={1088} 
+                  className="size-100 lg:size-200 place-self-center border-green-500 border shadow-2xl shadow-slate-300" 
+                />
   },
   {
     id: 6,
     title: "Long-Term ROI",
     text: "Invest in a tool built specifically for your workflow. A one-time custom build eliminates 'App Store' bloat and scales as you grow.",
-    visual: "📈"
+    visual:     <Image 
+                  src={ROI} 
+                  alt="My Brand" 
+                  width={960} 
+                  height={1088} 
+                  className="size-100 lg:size-200 place-self-center border-green-500 border shadow-2xl shadow-slate-300" 
+                />
   },
   {
     id: 7,
@@ -66,6 +95,12 @@ const SLIDES = [
     title: "Modular Growth", 
     text: "Every store is modular. You start with the engine you need today, and we 'plug in' new capabilities as you grow.", 
     type: "modular" 
+  },
+  { 
+    id: 11, 
+    isCTA: true, // This flag helps your renderer know to show the Link
+    title: "Ready to Own the Experience?", 
+    text: "Step into a one-of-one custom environment." 
   }
 ];
 
@@ -78,42 +113,77 @@ export default function Carousel() {
   const currentSlide = SLIDES.find(s => s.id === item);
 
   return (
-    <div className="grow h-full lg:h-[60vh] relative bg-white w-[85vw] m-7.5 rounded-2xl border flex flex-col overflow-hidden shadow-sm">
-      
+    <div className="grow h-full relative bg-white w-[85vw] m-7.5 rounded-2xl border flex flex-col overflow-hidden shadow-sm">
+            {/* Integrated Navigation Bar */}
+      <div className="flex items-center justify-center lg:gap-6 pb-12 mt-5">
+        {/* Prev Button */}
+        <button 
+          className="bg-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600 disabled:opacity-30 disabled:hover:bg-slate-800 transition-colors cursor-pointer"
+          onClick={itemDecrease}
+          disabled={item === 1}
+        >
+          ← 
+        </button>
+
+        {/* Dot Indicators */}
+        <div className="flex lg:gap-3 p-3 rounded-full bg-slate-100 border border-slate-200">
+          {SLIDES.map((slide) => (
+            <button
+              key={slide.id}
+              className={`size-4 rounded-full cursor-pointer transition-all duration-300 ${
+                item === slide.id 
+                ? 'bg-green-500 w-8' 
+                : 'bg-slate-300 hover:bg-slate-400'
+              }`}
+              onClick={() => setItem(slide.id)}
+            />
+          ))}
+        </div>
+
+        {/* Next Button */}
+        <button 
+          className="bg-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600 disabled:opacity-30 disabled:hover:bg-slate-800 transition-colors cursor-pointer"
+          onClick={itemIncrease}
+          disabled={item === SLIDES.length}
+        >
+          → 
+        </button>
+      </div>
+
       {/* Main Content Area */}
       <div className="grow p-5 w-full flex flex-col items-center justify-center gap-10">
-        <h2 className="text-2xl md:text-3xl text-center w-full text-pretty text-gray-700 font-medium max-w-4xl border-b-8 border-double border-slate-100 pb-6">
-          {currentSlide?.text}
-        </h2>
+        {/* Header Section */}
+        <div className="text-center w-full max-w-4xl border-b-8 border-double border-slate-100 pb-6">
+          <h2 className="text-2xl md:text-3xl text-pretty text-gray-700 font-medium">
+            {currentSlide?.text}
+          </h2>
+        </div>
 
+        {/* Visual/Type Switcher */}
         <div className="flex-1 w-full flex items-center justify-center">
-          {currentSlide?.type === "comparison" ? (
-            <div className="grid grid-cols-3 w-full max-w-2xl items-center gap-5 md:gap-10">
+          {currentSlide?.isCTA ? (
+            <div className="animate-in fade-in zoom-in duration-500 mb-5">
+              <Link href="/showroom" className="bg-green-600 hover:bg-green-700 text-white md:text-2xl font-black px-12 py-6 rounded-full shadow-2xl transition-all hover:scale-105">
+                Enter the Showroom →
+              </Link>
+            </div>
+          ) : currentSlide?.type === "comparison" ? (
+            <div className="grid grid-cols-3 w-full max-w-2xl items-center gap-5 md:gap-10 animate-in fade-in duration-500">
               <div className="flex flex-col gap-6 justify-center items-end col-start-1">
-                <Image src={ShopifyLogo} alt="Shopify" width={100} height={100} className="w-12 h-12 lg:w-20 lg:h-20 object-contain" />
-                <Image src={WPLogo} alt="WordPress" width={100} height={100} className="w-12 h-12 lg:w-20 lg:h-20 object-contain" />
+                <Image src={ShopifyLogo} alt="Shopify" width={100} height={100} className="w-12 h-12 lg:w-full lg:h-full object-contain" />
+                <Image src={WPLogo} alt="WordPress" width={100} height={100} className="w-12 h-12 lg:w-full lg:h-full object-contain" />
               </div>
               <p className="col-start-2 font-black text-center text-4xl text-red-600 italic">VS</p>
               <div className="col-start-3 flex justify-start">
-                <Image 
-                  src={MyLogo} 
-                  alt="My Brand" 
-                  width={300} 
-                  height={300} 
-                  className="w-16 h-16 lg:w-32 lg:h-32 rounded-full border-4 border-green-500 shadow-lg" 
-                />
+                <Image src={MyLogo} alt="My Brand" width={300} height={300} className="w-16 h-16 lg:w-full lg:h-full rounded-full border-4 border-green-500 shadow-lg" />
               </div>
             </div>
-          ) : (
+          ) : currentSlide?.visual ? (
             <div className="flex flex-col items-center gap-6 animate-in fade-in zoom-in duration-500 h-full w-full">
-               <p className="text-2xl font-bold text-slate-600 underline uppercase tracking-[0.2em] text-center">
-                {currentSlide?.title}
-               </p>
-               <span className="text-8xl lg:text-9xl drop-shadow-md h-full w-full">
-                {currentSlide?.visual}
-               </span>
+              <p className="text-2xl font-bold text-slate-600 underline uppercase tracking-[0.2em] text-center">{currentSlide.title}</p>
+              <span className="text-8xl lg:text-9xl drop-shadow-md">{currentSlide.visual}</span>
             </div>
-          )}
+          ) : null}
         </div>
       </div>
 
@@ -121,7 +191,7 @@ export default function Carousel() {
     {currentSlide?.type === "startup_costs" && (
     <div className="w-full h-full flex flex-col justify-center px-6 lg:px-12 animate-in fade-in duration-500">
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-5">
         {/* Competitor: The "Hidden" Cost */}
         <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
             <h4 className="text-base font-bold text-slate-500 mb-4 uppercase">Shopify / WP</h4>
@@ -165,7 +235,7 @@ export default function Carousel() {
 
     {/* Slide 8: Monthly Managed Costs */}
     {currentSlide?.type === "maintenance" && (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full h-full place-items-center px-5 animate-in fade-in">
+    <div className="grid grid-cols-1 md:grid-cols-2 mb-5 gap-6 w-full h-full place-items-center px-5 animate-in fade-in">
         
         {/* Standard Comparison */}
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm w-full h-full">
@@ -197,7 +267,7 @@ export default function Carousel() {
 
     {/* Slide 9: Standard vs. Premium Tiers */}
     {currentSlide?.type === "features" && (
-    <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4 h-full">
+    <div className="w-full max-w-5xl mx-auto mb-5 grid grid-cols-1 md:grid-cols-2 gap-8 px-4 h-full">
         
         {/* Standard Tier */}
         <div className="border border-slate-200 p-8 rounded-2xl bg-white shadow-sm flex flex-col h-full">
@@ -254,44 +324,6 @@ export default function Carousel() {
         </p>
     </div>
     )}
-
-      
-
-      {/* Integrated Navigation Bar */}
-      <div className="flex items-center justify-center lg:gap-6 pb-12 mt-5">
-        {/* Prev Button */}
-        <button 
-          className="bg-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600 disabled:opacity-30 disabled:hover:bg-slate-800 transition-colors cursor-pointer"
-          onClick={itemDecrease}
-          disabled={item === 1}
-        >
-          ← 
-        </button>
-
-        {/* Dot Indicators */}
-        <div className="flex lg:gap-3 p-3 rounded-full bg-slate-100 border border-slate-200">
-          {SLIDES.map((slide) => (
-            <button
-              key={slide.id}
-              className={`size-4 rounded-full cursor-pointer transition-all duration-300 ${
-                item === slide.id 
-                ? 'bg-green-500 w-8' 
-                : 'bg-slate-300 hover:bg-slate-400'
-              }`}
-              onClick={() => setItem(slide.id)}
-            />
-          ))}
-        </div>
-
-        {/* Next Button */}
-        <button 
-          className="bg-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-green-600 disabled:opacity-30 disabled:hover:bg-slate-800 transition-colors cursor-pointer"
-          onClick={itemIncrease}
-          disabled={item === SLIDES.length}
-        >
-          → 
-        </button>
-      </div>
 
     </div>
   )
