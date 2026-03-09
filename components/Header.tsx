@@ -25,6 +25,10 @@ export default function Header(){
                 <nav aria-label="Developer Info" className="md:block">
                 <ul className="flex items-center gap-6 text-sm">
                     <li>
+                    <Link className="text-gray-500 transition hover:text-gray-500/75 lg:text-2xl" href="/"> 🏚️ </Link >
+                    </li>
+                    
+                    <li>
                     <Link className="text-gray-500 transition hover:text-gray-500/75 lg:text-2xl" href="/about"> About </Link >
                     </li>
 
