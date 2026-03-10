@@ -61,3 +61,7 @@
 .boxShadow{
   @apply shadow-2xl shadow-slate-700 ;
 }
+
+.showroomButton{
+  @apply rounded-3xl border border-(--tertiary) text-2xl font-bold p-2 cursor-pointer;
+}
