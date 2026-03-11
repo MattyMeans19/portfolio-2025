@@ -36,3 +36,8 @@ export type FormState =
     url: string,
     siteRepo: string
   }
+
+  export type SessionPayload = {
+  username: string, 
+  expiresAt: Date
+}
