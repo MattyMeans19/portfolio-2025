@@ -26,5 +26,14 @@ export const client = pgTable("clients", {
 })
 
 export const Issues = pgTable("issues", {
+    id: serial('issue_id').notNull().unique(),
+    client: varchar('client', {length: 255}).notNull(),
+    site: varchar('site', {length: 255}).notNull(),
+    issue: text('issue').notNull()
+})
 
+export const ToDo = pgTable("to_do", {
+    id: serial('id').notNull().unique(),
+    title: varchar('todo_title', {length: 60}).notNull(),
+    info: text('to_do').notNull()
 })
