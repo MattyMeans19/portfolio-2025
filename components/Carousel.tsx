@@ -322,7 +322,7 @@ useEffect(() => {
         
         <p className="text-3xl underline text-green-700 mb-5">Add-on Examples:</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full px-4">
-        {["Rewards", "Delivery", "Analytics", "API"].map((item) => (
+        {["Rewards", "Delivery", "Analytics", "POS"].map((item) => (
             <div key={item} className="bg-slate-100 p-6 rounded-2xl border border-slate-200 font-black text-slate-700 text-sm lg:text-base hover:border-green-500 hover:bg-green-50 transition-colors">
             +{item}
             </div>

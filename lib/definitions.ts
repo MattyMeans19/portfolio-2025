@@ -41,3 +41,32 @@ export type FormState =
   username: string, 
   expiresAt: Date
 }
+
+export type Quote = {
+  id: number,
+  client_name: string,
+  add_ons: {
+    name: string,
+    info: string,
+    price: number,
+    time: number
+  },
+  totalPrice: number,
+  primaryColor: string,
+  secondaryColor: string
+}
+
+export type Addons = {
+  title: string,
+  info: string, 
+  timeToBuild: number,
+  startupPrice: number,
+  monthlyPrice: number
+}
+
+export type Engine ={
+    name: string,
+    startupPrice: number,
+    monthlyPrice: number,
+    included: string
+}

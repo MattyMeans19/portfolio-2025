@@ -12,9 +12,11 @@ export const Quotes = pgTable("quotes", {
         name: string;
         price: number;
         time_to_build: number;
-        description: string
+        info: string
     }[]>().default([]),
-    totalPrice: integer("total_price").notNull()
+    totalPrice: integer("total_price").notNull(),
+    primaryColor: varchar("primary_color").notNull(),
+    secondaryColor: varchar("secondary_color").notNull()
 })
 
 export const client = pgTable("clients", {
