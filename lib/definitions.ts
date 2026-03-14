@@ -61,7 +61,8 @@ export type Addons = {
   info: string, 
   timeToBuild: number,
   startupPrice: number,
-  monthlyPrice: number
+  monthlyPrice: number,
+  isPremium: boolean
 }
 
 export type Engine ={
