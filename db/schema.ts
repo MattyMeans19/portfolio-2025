@@ -8,12 +8,7 @@ export const Quotes = pgTable("quotes", {
     id: serial('quote_id').primaryKey(),
     customer: varchar("name", {length: 255}).notNull(),
     template: templateEnum('template').default('Business-Standard').notNull(),
-    addOns : jsonb("addon_ons").$type<{
-        name: string;
-        price: number;
-        time_to_build: number;
-        info: string
-    }[]>().default([]),
+    addOns : integer('addons').array().notNull(),
     totalPrice: integer("total_price").notNull(),
     primaryColor: varchar("primary_color").notNull(),
     secondaryColor: varchar("secondary_color").notNull()
@@ -28,14 +23,24 @@ export const client = pgTable("clients", {
 })
 
 export const Issues = pgTable("issues", {
-    id: serial('issue_id').notNull().unique(),
+    id: serial('issue_id').primaryKey(),
     client: varchar('client', {length: 255}).notNull(),
     site: varchar('site', {length: 255}).notNull(),
     issue: text('issue').notNull()
 })
 
 export const ToDo = pgTable("to_do", {
-    id: serial('id').notNull().unique(),
+    id: serial('id').primaryKey(),
     title: varchar('todo_title', {length: 60}).notNull(),
     info: text('to_do').notNull()
+})
+
+export const AddOns = pgTable("add_ons", {
+    id: serial('addon_id').primaryKey(),
+    name: varchar('name').notNull(),
+    info: text('info').notNull(),
+    startUp: integer('startup').notNull(),
+    monthly: integer('monthly').notNull(),
+    buildETA: integer('build_time').notNull(),
+    isPremium: boolean('is_premium').notNull()
 })

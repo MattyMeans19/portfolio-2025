@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import {decrypt} from "@/lib/session";
 import { redirect } from "next/navigation";
 import DBNav from "@/components/dashboard-nav";
+import AddonCreator from "@/components/addon-creator";
 
 export default async function DashBoard(){
     const cookie = (await cookies()).get('session')?.value;
@@ -17,9 +18,9 @@ export default async function DashBoard(){
     return(
         <div className="flex flex-col w-full h-full">
             <DBNav />
-            <div className="grow p-20 flex flex-col lg:grid grid-cols-2 gap-5">
-                <p className="text-center text-5xl"> <strong className="text-(--secondary)">#</strong> Quotes are waiting for your review.</p>
-                <div className="row-span-2 flex flex-col gap-5 border-5 border-double px-15">
+            <div className="grow lg:p-20 flex flex-col lg:grid grid-cols-2 gap-5">
+                <p className="row-start-1 text-center text-5xl content-center"> <strong className="text-(--secondary)">#</strong> Quotes are waiting for your review.</p>
+                <div className="grow col-start-1 row-start-2 flex flex-col gap-5 border-5 border-double px-15">
                     <h1 className="text-center text-6xl underline">To Do</h1>
                     <ul className="list-disc text-3xl">
                         <li>
@@ -27,9 +28,10 @@ export default async function DashBoard(){
                         </li>
                     </ul>
                 </div>
-                <div className="border-5 border-double text-3xl">
+                <div className="border-5 col-start-2 row-start-1 border-double text-3xl">
                    <h1 className="text-center"># of issues reported this month</h1>
                 </div>
+                <AddonCreator />
             </div>
         </div>
         

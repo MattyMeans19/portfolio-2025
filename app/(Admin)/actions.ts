@@ -1,5 +1,8 @@
 'use server';
 
+import { db } from "@/db";
+import { AddOns } from "@/db/schema";
+import { Addons } from "@/lib/definitions";
 import { createSession } from "@/lib/session";
 import bcrypt from "bcrypt"
 import { revalidatePath } from "next/cache";
@@ -37,4 +40,16 @@ export async function Logout() {
   // 3. Clear the Next.js Client Router Cache
   // This is the most likely culprit for "logging back in" on refresh
   revalidatePath('/admin', 'layout');
+}
+
+export async function CreateAddon(addon: Addons){
+    const request = await db.insert(AddOns).values(
+        {name: addon.title, info: addon.info, startUp: addon.startupPrice, monthly: addon.monthlyPrice, buildETA: addon.timeToBuild, isPremium: addon.isPremium}
+    );
+
+    if(request.rowCount != 0){
+        return {success: true, message: "Addon created!"}
+    } else{
+        return {success: false, message: "Addon not created!"}
+    }
 }
