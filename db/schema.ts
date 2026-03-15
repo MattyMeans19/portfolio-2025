@@ -1,4 +1,4 @@
-import { integer, pgTableCreator, varchar, boolean, text, doublePrecision, pgEnum, serial, jsonb } from "drizzle-orm/pg-core";
+import { integer, pgTableCreator, varchar, boolean, text, doublePrecision, pgEnum, serial, jsonb, date } from "drizzle-orm/pg-core";
 
 export const pgTable = pgTableCreator((name) => `${name}`);
 export const templateEnum = pgEnum('template', ['Business-Standard', 'Business-Premium', 'Restaurant-Standard', 'Restaurant-Premium']);
@@ -26,7 +26,8 @@ export const Issues = pgTable("issues", {
     id: serial('issue_id').primaryKey(),
     client: varchar('client', {length: 255}).notNull(),
     site: varchar('site', {length: 255}).notNull(),
-    issue: text('issue').notNull()
+    issue: text('issue').notNull(),
+    datePosted: date('date_posted').notNull()
 })
 
 export const ToDo = pgTable("to_do", {

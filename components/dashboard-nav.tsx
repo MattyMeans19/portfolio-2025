@@ -11,6 +11,7 @@ export default function DBNav(){
                     onClick={() => Logout()}>
                     Logout
                 </button>
+                <button className="lg:text-2xl border-2 p-2 rounded-2xl bg-white cursor-pointer">Dashboard</button>
                 <button className="lg:text-2xl border-2 p-2 rounded-2xl bg-white cursor-pointer">Pending Quotes</button>
                 <button className="lg:text-2xl border-2 p-2 rounded-2xl bg-white cursor-pointer">Current Clients</button>
                 <button className="lg:text-2xl border-2 p-2 rounded-2xl bg-white cursor-pointer">Analytics</button>

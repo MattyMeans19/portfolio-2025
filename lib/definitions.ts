@@ -56,12 +56,13 @@ export type Quote = {
   secondaryColor: string
 }
 
-export type Addons = {
-  title: string,
+export type Addon = {
+  id: number | null, 
+  name: string,
   info: string, 
-  timeToBuild: number,
-  startupPrice: number,
-  monthlyPrice: number,
+  startUp: number,
+  monthly: number,
+  buildETA: number,
   isPremium: boolean
 }
 
@@ -70,4 +71,10 @@ export type Engine ={
     startupPrice: number,
     monthlyPrice: number,
     included: string
+}
+
+export type ToDoItem = {
+  id: number, 
+  title: string,
+  info: string
 }

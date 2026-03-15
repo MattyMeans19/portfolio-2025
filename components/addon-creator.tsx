@@ -1,21 +1,22 @@
 "use client";
 
 import { CreateAddon } from "@/app/(Admin)/actions";
-import { Addons } from "@/lib/definitions";
+import { Addon } from "@/lib/definitions";
 import { useState } from "react";
 
 export default function AddonCreator(){
-    const [newAddon, updateNewAddon] = useState<Addons>({
-        title: "",
+    const [newAddon, updateNewAddon] = useState({
+        id: null,
+        name: "",
         info: "",
-        startupPrice: 0,
-        monthlyPrice: 0,
-        timeToBuild: 0,
+        startUp: 0,
+        monthly: 0,
+        buildETA: 0,
         isPremium: false
     })
 
     async function SaveAddon(){
-        if(newAddon.title && newAddon.info && newAddon.timeToBuild > 0){
+        if(newAddon.name && newAddon.info && newAddon.buildETA > 0){
          const request = await CreateAddon(newAddon);
          if(request.success){
             alert(request.message)
@@ -32,14 +33,14 @@ export default function AddonCreator(){
     return(
         <div className="grow col-start-2 border-5 border-double lg:px-15 flex flex-col lg:grid grid-cols-2 gap-5">
             <h1 className="text-4xl underline font-bold col-span-full text-center">Add-on Creator</h1>
-            <input type="text" id="title" placeholder="Title" className="border h-fit" onChange={(e) => (updateNewAddon({...newAddon, title: e.target.value}))}/>
+            <input type="text" id="title" placeholder="Title" className="border h-fit" onChange={(e) => (updateNewAddon({...newAddon, name: e.target.value}))}/>
             <textarea id="info" placeholder="Description" maxLength={255} className=" col-start-2 border h-full" onChange={(e) => (updateNewAddon({...newAddon, info: e.target.value}))}/>
             <label htmlFor="startup">Start up cost (in cents)</label>
-            <input type="number" id="startup" className="border h-fit" onChange={(e) => (updateNewAddon({...newAddon, startupPrice: e.target.valueAsNumber}))}/>
+            <input type="number" id="startup" className="border h-fit" onChange={(e) => (updateNewAddon({...newAddon, startUp: e.target.valueAsNumber}))}/>
             <label htmlFor="monthly">Monthlycost (in cents)</label>
-            <input type="number" id="monthly" className="border h-fit" onChange={(e) => (updateNewAddon({...newAddon, monthlyPrice: e.target.valueAsNumber}))}/>
+            <input type="number" id="monthly" className="border h-fit" onChange={(e) => (updateNewAddon({...newAddon, monthly: e.target.valueAsNumber}))}/>
             <label htmlFor="buildTime">Days to build</label>
-            <input type="number" id="buildTime" className="border h-fit" onChange={(e) => (updateNewAddon({...newAddon, timeToBuild: e.target.valueAsNumber}))}/>
+            <input type="number" id="buildTime" className="border h-fit" onChange={(e) => (updateNewAddon({...newAddon, buildETA: e.target.valueAsNumber}))}/>
             <label htmlFor="isPremium">Premium only</label>
             <input type="checkbox" id="isPremium" className="border size-10" onChange={(e) => (updateNewAddon({...newAddon, isPremium: e.target.checked}))}/>
             <button className="p-5 col-span-full self-center bg-(--primary)" onClick={() => (SaveAddon())}>

@@ -24,9 +24,7 @@ export default function Admin(){
             }
         } else{
             alert("You stupid bruh, enter your login shit.")
-        }
-        
-
+        } 
     }
 
     return(
