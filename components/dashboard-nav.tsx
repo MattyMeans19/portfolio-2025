@@ -6,7 +6,7 @@ export default function DBNav(){
     return(
         <div className="flex flex-col items-center bg-(--primary) border-b-10 border-double pb-5 gap-10">
             <h1 className="text-5xl">Dashboard</h1>
-            <div className="w-full flex flex-nowrap justify-around">
+            <div className="w-full flex flex-wrap lg:flex-nowrap justify-around">
                 <button className="bg-white text-2xl p-5 rounded-full border cursor-pointer"
                     onClick={() => Logout()}>
                     Logout

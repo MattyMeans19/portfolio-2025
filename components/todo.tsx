@@ -30,7 +30,7 @@ export default function ToDoList(props: ToDoList){
     }
 
     return(
-        <div className="grow col-start-1 flex flex-col gap-5 border-5 border-double px-15">
+        <div className="grow col-start-1 max-w-screen flex flex-col gap-5 border-5 border-double px-15">
             <h1 className="text-center text-6xl underline">To Do</h1>
             <div className="grow h-full overflow-y-scroll">
                 <ul className="pl-8 text-2xl">
@@ -47,10 +47,10 @@ export default function ToDoList(props: ToDoList){
                     }
                 </ul>                
             </div>
-            <div className="flex flex-nowrap gap-5 mb-5">
-                <input type="text" autoComplete="off" id="name" className="border px-2" placeholder="To Do Title"/>
-                <textarea id="info" className="border px-2 w-full" placeholder="To Do Info"/>
-                <button className="rounded-2xl bg-(--secondary) text-2xl w-fit px-10"
+            <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-5 mb-5">
+                <input type="text" autoComplete="off" id="name" className="border px-2 lg:h-fit" placeholder="To Do Title"/>
+                <textarea id="info" className="border px-2 w-full h-20 lg:h-10" placeholder="To Do Info"/>
+                <button className="rounded-2xl bg-(--secondary) text-2xl w-full lg:px-10"
                     onClick={() => {
                         const newTitle = document.getElementById("name") as HTMLInputElement;
                         const newInfo = document.getElementById("info") as HTMLInputElement;
