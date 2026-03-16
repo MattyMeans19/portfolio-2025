@@ -7,19 +7,23 @@ export type Template = (typeof templateEnum.enumValues)[number];
 export const Quotes = pgTable("quotes", {
     id: serial('quote_id').primaryKey(),
     customer: varchar("name", {length: 255}).notNull(),
+    customerTel: varchar("tel", {length: 15}).notNull(),
+    customerEmail: varchar("email").notNull(),
     template: templateEnum('template').default('Business-Standard').notNull(),
     addOns : integer('addons').array().notNull(),
-    totalPrice: integer("total_price").notNull(),
-    primaryColor: varchar("primary_color").notNull(),
-    secondaryColor: varchar("secondary_color").notNull()
+    totalStartup: integer("total_startup").notNull(),
+    totalMonthly: integer("total_monthly").notNull(),
+    createdAt: date('created_at').notNull()
 })
 
-export const client = pgTable("clients", {
+export const Clients = pgTable("clients", {
     id: serial('client_id').primaryKey(),
     name: varchar('client_name', {length: 255}).notNull().unique(),
-    phone: varchar('client_tel', {length: 10}).notNull(),
+    phone: varchar('client_tel', {length: 15}).notNull(),
     email: varchar('client_email', {length: 255}).notNull().unique(),
-    recurring: integer('maintenence_cost').notNull()
+    startUp: integer('startup_cost').notNull(),
+    recurring: integer('maintenence_cost').notNull(),
+    clientSince: date('client_since').notNull()
 })
 
 export const Issues = pgTable("issues", {

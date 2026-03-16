@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { useState } from "react"
 
 export default function Showroom() {
@@ -99,6 +100,10 @@ export default function Showroom() {
                         title="Showroom Content"
                     />
                 </div>
+            </div>
+
+            <div className="w-fit place-self-center text-4xl text-center p-2">
+                <p>Ready for a quote? Visit the <Link href={"/quote"} className="bg-(--primary) border rounded-2xl px-5">Quote Builder</Link></p>
             </div>
         </div>
     )

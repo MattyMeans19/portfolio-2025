@@ -43,18 +43,18 @@ export type FormState =
 }
 
 export type Quote = {
-  id: number,
-  client_name: string,
-  add_ons: {
-    name: string,
-    info: string,
-    price: number,
-    time: number
-  },
-  totalPrice: number,
-  primaryColor: string,
-  secondaryColor: string
+  client: string,
+  tel: string,
+  email: string,
+  engine: 'Business-Standard' | 'Business-Premium' | 'Restaurant-Standard' | 'Restaurant-Premium',
+  addons: number[],
+  totalStartup: number,
+  totalMonthly: number,
+  completionETA: number, 
+  createdAt: string
 }
+
+
 
 export type Addon = {
   id: number | null, 
@@ -77,4 +77,14 @@ export type ToDoItem = {
   id: number, 
   title: string,
   info: string
+}
+
+export type Client = {
+  id: number;
+  customer: string;
+  customerTel: string;
+  customerEmail: string;
+  totalStartup: number;
+  totalMonthly: number;
+  createdAt: string;
 }

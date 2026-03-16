@@ -14,7 +14,7 @@ export async function Email(formState: FormState, formData: FormData){
         template_id: process.env.Email_TemplateID,
         user_id: process.env.PublicKey,
         template_params:{
-            title: "Project inquiry",
+            title: "Inquiry",
             name: name,
             email: email,
             message: message,

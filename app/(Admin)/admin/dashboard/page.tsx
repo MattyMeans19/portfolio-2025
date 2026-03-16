@@ -8,7 +8,6 @@ import ToDoList from "@/components/todo";
 import { db } from "@/db";
 import { AddOns, Issues, Quotes, ToDo } from "@/db/schema";
 import { Addon, ToDoItem } from "@/lib/definitions";
-import { DeleteAddon } from "../../actions";
 import AddonList from "@/components/addon-list";
 
 export default async function DashBoard(){

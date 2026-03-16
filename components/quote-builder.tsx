@@ -1,16 +1,21 @@
 'use client';
-import { Addon } from "@/lib/definitions";
+import { Addon, Quote } from "@/lib/definitions";
 import { useEffect, useState } from "react";
 import { EngineDetails } from "@/lib/quote";
+import { NewQuote } from "@/app/(Admin)/actions";
+import { redirect } from "next/navigation";
 
 export default function QuoteBuilder(props: { addons: Addon[] }) {
-    const [quote, UpdateQuote] = useState({
-        client: { name: "", tel: "", email: "" },
-        engine: "Business Standard",
-        addons: [] as number[],
-        totalStartup: 0,
-        totalMonthly: 0,
-        completionETA: 0
+    const [quote, UpdateQuote] = useState<Quote>({
+        client: "",
+        tel: "",
+        email: "",
+        engine: "Business-Standard",
+        addons: [],
+        totalStartup: 49999,
+        totalMonthly: 9999,
+        completionETA: 7,
+        createdAt: ""
     });
 
     const [engineDetails, updateEngineDetails] = useState({
@@ -18,6 +23,8 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
     });
 
     const [availableAddons, updateAddons] = useState<any[]>([]);
+    const [message, updateMessage] = useState("")
+
 
     useEffect(() => {
         if (engineDetails.name != quote.engine) {
@@ -27,6 +34,10 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
         }
         if (availableAddons.length === 0) {
             updateAddons(props.addons.filter(addon => !addon.isPremium));
+        }
+        if(quote.createdAt === ""){
+            const todaysDate = new Date().toISOString();
+            UpdateQuote({...quote, createdAt: todaysDate})
         }
     }, [quote.engine, props.addons]); // Added dependency array for safety
 
@@ -45,6 +56,23 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
         if(!quote.addons.includes(addon.id!)){
             currentAddons.push(addon.id!)
             UpdateQuote({...quote, addons: currentAddons, totalStartup: (quote.totalStartup + addon.startUp), totalMonthly: (quote.totalMonthly + addon.monthly), completionETA: (quote.completionETA + addon.buildETA)})
+        } else if(quote.addons.includes(addon.id!)){
+            const removedAddons = quote.addons.filter(toRemove => toRemove != addon.id);
+            UpdateQuote({...quote, addons: removedAddons, totalStartup: (quote.totalStartup - addon.startUp), totalMonthly: (quote.totalMonthly - addon.monthly), completionETA: (quote.completionETA - addon.buildETA)}) 
+        }
+    }
+
+    async function SubmitQuote(quote: Quote){
+        if(quote.client === "" || quote.tel === "" || quote.email === ""){
+            alert("Please fill out all contact information!");
+        } else{
+            const request = await NewQuote(quote);
+            if(request!.success){
+                updateMessage(request!.message)
+                redirect("/success")
+            } else{
+                updateMessage(request!.message)
+            }
         }
     }
 
@@ -56,15 +84,18 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                     <div className="flex flex-col gap-2">
                         <label htmlFor="clientName" className="font-semibold text-slate-700">Client / Business Name</label>
-                        <input type="text" id="clientName" placeholder="John Doe" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"/>
+                        <input type="text" id="clientName" placeholder="John Doe" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
+                            onChange={(e) => (UpdateQuote({...quote, client: e.target.value}))}/>
                     </div>
                     <div className="flex flex-col gap-2">
                         <label htmlFor="clientTel" className="font-semibold text-slate-700">Phone Number</label>
-                        <input type="tel" id="clientTel" placeholder="505-555-5555" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"/>
+                        <input type="tel" id="clientTel" placeholder="505-555-5555" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
+                            onChange={(e) => (UpdateQuote({...quote, tel: e.target.value}))}/>
                     </div>
                     <div className="flex flex-col gap-2">
                         <label htmlFor="clientEmail" className="font-semibold text-slate-700">Email Address</label>
-                        <input type="email" id="clientEmail" placeholder="matt@example.com" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"/>
+                        <input type="email" id="clientEmail" placeholder="matt@example.com" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
+                            onChange={(e) => (UpdateQuote({...quote, email: e.target.value}))}/>
                     </div>
                 </div>
             </section>
@@ -80,14 +111,14 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
                             id="engine" 
                             className="w-full text-xl p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-(--primary) transition-colors"
                             onChange={(e) => {
-                                UpdateQuote({...quote, engine: e.target.value});
+                                UpdateQuote({...quote, engine: e.target.value as Quote['engine']});
                                 refreshAddons(e.target.value);
                             }}
                         >
-                            <option value="Business Standard">Business Standard</option>
-                            <option value="Restaurant Standard">Restaurant Standard</option>
-                            <option value="Business Premium">Business Premium</option>
-                            <option value="Restaurant Premium">Restaurant Premium</option>
+                            <option value="Business-Standard">Business Standard</option>
+                            <option value="Restaurant-Standard">Restaurant Standard</option>
+                            <option value="Business-Premium">Business Premium</option>
+                            <option value="Restaurant-Premium">Restaurant Premium</option>
                         </select>
                     </div>
 
@@ -100,26 +131,26 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
 
                     <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
                         <span className="text-slate-500 font-medium">Starting Investment:</span>
-                        <span className="text-3xl font-black text-(--primary)">
+                        <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
                             ${(quote.totalStartup / 100).toLocaleString()} + tax
                         </span>
                     </div>
                     <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
                         <span className="text-slate-500 font-medium">Monthly Fees:</span>
-                        <span className="text-3xl font-black text-(--primary)">
+                        <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
                             ${(quote.totalMonthly / 100).toLocaleString()} + tax
                         </span>
                     </div>
                     <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
                         <span className="text-slate-500 font-medium">Build Time:</span>
-                        <span className="text-3xl font-black text-(--primary)">
+                        <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
                             {quote.completionETA} Days
                         </span>
                     </div>
                 </div>
 
                 {/* Right: Add-ons Scrollable List */}
-                <div className="lg:col-span-5 bg-white rounded-3xl border border-slate-200 shadow-xl flex flex-col overflow-hidden max-h-[50vh]">
+                <div className="lg:col-span-5 bg-white rounded-3xl border border-slate-200 shadow-xl flex flex-col overflow-hidden md:max-h-[70vh] xlg:max-h-[50vh]">
                     <div className="p-6 bg-slate-50 border-b border-slate-200">
                         <h3 className="text-xl text-(--primary) text-shadow-md text-shadow-black font-bold text-center">Available Add-Ons</h3>
                     </div>
@@ -145,8 +176,13 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
                         ))}
                     </div>
                 </div>
-
             </section>
+            {message && <p className="w-full text-center text-3xl text-black">{message}</p>}
+            <button className="border border-(--tertiary) rounded-4xl bg-white shadow-lg shadow-slate-700 
+                    text-5xl text-(--secondary) active:text-(--primary) text-shadow-md text-shadow-black p-10"
+                    onClick={() => (SubmitQuote(quote))}>
+                        Submit
+            </button>
         </div>
     );
 }
