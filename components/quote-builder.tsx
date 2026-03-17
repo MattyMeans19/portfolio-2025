@@ -5,13 +5,26 @@ import { EngineDetails } from "@/lib/quote";
 import { NewQuote } from "@/app/(Admin)/actions";
 import { redirect } from "next/navigation";
 
+const formatPhoneNumber = (value: string) => {
+    // Strip all non-digits
+    const numbers = value.replace(/\D/g, '');
+    
+    // Apply the 000-000-0000 mask
+    const char = { 3: '-', 6: '-' };
+    let formatted = '';
+    for (let i = 0; i < numbers.length && i < 10; i++) {
+        formatted += (char[i as keyof typeof char] || '') + numbers[i];
+    }
+    return formatted;
+};
+
 export default function QuoteBuilder(props: { addons: Addon[] }) {
     const [quote, UpdateQuote] = useState<Quote>({
-        client: "",
-        tel: "",
-        email: "",
-        engine: "Business-Standard",
-        addons: [],
+        customer: "",
+        customerTel: "",
+        customerEmail: "",
+        template: "Business-Standard",
+        addOns: [],
         totalStartup: 49999,
         totalMonthly: 9999,
         completionETA: 7,
@@ -27,8 +40,8 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
 
 
     useEffect(() => {
-        if (engineDetails.name != quote.engine) {
-            const engineInfo = EngineDetails.filter(engine => engine.name === quote.engine);
+        if (engineDetails.name != quote.template) {
+            const engineInfo = EngineDetails.filter(engine => engine.name === quote.template);
             updateEngineDetails(engineInfo[0]);
             UpdateQuote({...quote, totalStartup: engineInfo[0].startupPrice, totalMonthly: engineInfo[0].monthlyPrice, completionETA: engineInfo[0].buildTime})
         }
@@ -39,7 +52,7 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
             const todaysDate = new Date().toISOString();
             UpdateQuote({...quote, createdAt: todaysDate})
         }
-    }, [quote.engine, props.addons]); // Added dependency array for safety
+    }, [quote.template, props.addons]); // Added dependency array for safety
 
 
     function refreshAddons(selection: string){
@@ -52,18 +65,18 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
     }
 
     function addOnClicked(addon: Addon){
-        const currentAddons = quote.addons
-        if(!quote.addons.includes(addon.id!)){
+        const currentAddons = quote.addOns
+        if(!quote.addOns.includes(addon.id!)){
             currentAddons.push(addon.id!)
-            UpdateQuote({...quote, addons: currentAddons, totalStartup: (quote.totalStartup + addon.startUp), totalMonthly: (quote.totalMonthly + addon.monthly), completionETA: (quote.completionETA + addon.buildETA)})
-        } else if(quote.addons.includes(addon.id!)){
-            const removedAddons = quote.addons.filter(toRemove => toRemove != addon.id);
-            UpdateQuote({...quote, addons: removedAddons, totalStartup: (quote.totalStartup - addon.startUp), totalMonthly: (quote.totalMonthly - addon.monthly), completionETA: (quote.completionETA - addon.buildETA)}) 
+            UpdateQuote({...quote, addOns: currentAddons, totalStartup: (quote.totalStartup + addon.startUp), totalMonthly: (quote.totalMonthly + addon.monthly), completionETA: (quote.completionETA + addon.buildETA)})
+        } else if(quote.addOns.includes(addon.id!)){
+            const removedAddons = quote.addOns.filter(toRemove => toRemove != addon.id);
+            UpdateQuote({...quote, addOns: removedAddons, totalStartup: (quote.totalStartup - addon.startUp), totalMonthly: (quote.totalMonthly - addon.monthly), completionETA: (quote.completionETA - addon.buildETA)}) 
         }
     }
 
     async function SubmitQuote(quote: Quote){
-        if(quote.client === "" || quote.tel === "" || quote.email === ""){
+        if(quote.customer === "" || quote.customerEmail === "" || quote.customerTel === ""){
             alert("Please fill out all contact information!");
         } else{
             const request = await NewQuote(quote);
@@ -76,6 +89,8 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
         }
     }
 
+    
+
     return (
         <div className="grow bg-slate-50 p-4 md:p-10 flex flex-col items-center gap-8 hero-bg">
             {/* SECTION 1: CONTACT DETAILS */}
@@ -85,17 +100,21 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
                     <div className="flex flex-col gap-2">
                         <label htmlFor="clientName" className="font-semibold text-slate-700">Client / Business Name</label>
                         <input type="text" id="clientName" placeholder="John Doe" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
-                            onChange={(e) => (UpdateQuote({...quote, client: e.target.value}))}/>
+                            onChange={(e) => (UpdateQuote({...quote, customer: e.target.value}))}/>
                     </div>
                     <div className="flex flex-col gap-2">
                         <label htmlFor="clientTel" className="font-semibold text-slate-700">Phone Number</label>
-                        <input type="tel" id="clientTel" placeholder="505-555-5555" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
-                            onChange={(e) => (UpdateQuote({...quote, tel: e.target.value}))}/>
+                        <input type="tel" id="clientTel" placeholder="505-555-5555" maxLength={12} value={quote.customerTel}
+                            className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
+                            onChange={(e) => {
+                                const formatted = formatPhoneNumber(e.target.value);
+                                UpdateQuote({...quote, customerTel: formatted})
+                            }}/>
                     </div>
                     <div className="flex flex-col gap-2">
                         <label htmlFor="clientEmail" className="font-semibold text-slate-700">Email Address</label>
                         <input type="email" id="clientEmail" placeholder="matt@example.com" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
-                            onChange={(e) => (UpdateQuote({...quote, email: e.target.value}))}/>
+                            onChange={(e) => (UpdateQuote({...quote, customerEmail: e.target.value}))}/>
                     </div>
                 </div>
             </section>
@@ -111,7 +130,7 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
                             id="engine" 
                             className="w-full text-xl p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-(--primary) transition-colors"
                             onChange={(e) => {
-                                UpdateQuote({...quote, engine: e.target.value as Quote['engine']});
+                                UpdateQuote({...quote, template: e.target.value as Quote['template']});
                                 refreshAddons(e.target.value);
                             }}
                         >
@@ -158,7 +177,7 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
                     <div className="overflow-y-auto p-4 flex flex-col gap-4 custom-scrollbar">
                         {availableAddons.map((addon) => (
                             <button key={addon.id} className={`group text-left p-4 border-2 border-slate-100 rounded-2xl hover:border-(--primary) 
-                                ${quote.addons.includes(addon.id) && "bg-(--primary)"} transition-all shadow-sm`}
+                                ${quote.addOns.includes(addon.id) && "bg-(--primary)"} transition-all shadow-sm`}
                                 onClick={() => addOnClicked(addon)}>
                                 <h4 className="font-bold text-lg text-(--primary) text-shadow-md text-shadow-black group-hover:underline">{addon.name}</h4>
                                 <p className="text-sm text-slate-600 mb-2 line-clamp-2">{addon.info}</p>

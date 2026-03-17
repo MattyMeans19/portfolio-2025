@@ -1,16 +1,16 @@
 'use client';
 
 import { DeleteQuote } from "@/app/(Admin)/actions";
-import { Client } from "@/lib/definitions";
+import { Addon, PendingQuote } from "@/lib/definitions";
 
 interface Card {
-    quotes: Client[],
+    quotes: PendingQuote[],
+    addons: Addon[]
 }
 
 export default function QuoteCard(props: Card){
 
-
-    async function Clicked(approved: boolean, quoteData: Client){
+    async function Clicked(approved: boolean, quoteData: PendingQuote){
         const request = await DeleteQuote(approved, quoteData);
         if(request.success){
             alert(request.message);
@@ -20,6 +20,14 @@ export default function QuoteCard(props: Card){
         }
     }
 
+    const selectedAddons = (ids: number[] | null) =>{
+        if(ids != null){
+            let list = props.addons.filter(addon => ids!.includes(addon.id!))
+            return list   
+        } else{
+            return [{name: "No Addons", id: 0}]
+        }
+    }
 
     return(
         <div className="grow flex flex-col">
@@ -55,6 +63,25 @@ export default function QuoteCard(props: Card){
                             <strong className="text-3xl text-(--primary) text-shadow-md text-shadow-black">Created At (yyy-mm-dd):</strong>
                             <br/>
                             {quote.createdAt}
+                         </p>
+                        <p className="text-3xl">
+                            <strong className="text-3xl text-(--primary) text-shadow-md text-shadow-black">Engine:</strong>
+                            <br/>
+                            {quote.template}
+                         </p>
+                        <span className="text-3xl">
+                            <strong className="text-3xl text-(--primary) text-shadow-md text-shadow-black">Addons:</strong>
+                            <br/>
+                            <ul>
+                                 {selectedAddons(quote.addOns).map((addon) =>(
+                                    <li key={addon.id}>{addon.name}</li>
+                                 ))}
+                            </ul>
+                         </span>
+                        <p className="text-3xl">
+                            <strong className="text-3xl text-(--primary) text-shadow-md text-shadow-black">Compleation ETA:</strong>
+                            <br/>
+                            {quote.completionETA} days
                          </p>
                          <div className="mt-10 col-span-full w-full flex flex-nowrap justify-around">
                             <button className="text-2xl p-5 rounded-4xl shadow-md shadow-slate-800 bg-(--secondary)"

@@ -2,7 +2,7 @@
 
 import { db } from "@/db";
 import { AddOns, Clients, Quotes, ToDo } from "@/db/schema";
-import { Addon, Client, Quote } from "@/lib/definitions";
+import { Addon, Client, PendingQuote, Quote } from "@/lib/definitions";
 import { createSession } from "@/lib/session";
 import bcrypt from "bcrypt"
 import { eq } from "drizzle-orm";
@@ -101,14 +101,15 @@ export async function NewQuote(quote: Quote){
     try{
         const request = await db.insert(Quotes).values(
         {           
-            customer: quote.client,
-            customerTel: quote.tel,
-            customerEmail: quote.email,
-            template: quote.engine,
-            addOns : quote.addons,
+            customer: quote.customer,
+            customerTel: quote.customerTel,
+            customerEmail: quote.customerEmail,
+            template: quote.template,
+            addOns : quote.addOns,
             totalStartup: quote.totalStartup,
             totalMonthly: quote.totalMonthly,
-            createdAt: quote.createdAt
+            createdAt: quote.createdAt,
+            completionETA: quote.completionETA
         }
         ).returning({id: Quotes.id})
 
@@ -127,8 +128,8 @@ export async function NewQuote(quote: Quote){
     }
 }
 
-export async function DeleteQuote(approved: boolean, client: Client){
-    const newDate = new Date().toDateString();
+export async function DeleteQuote(approved: boolean, client: PendingQuote){
+    const newDate = new Date().toISOString();
 
     if(approved === true){
         try{
@@ -136,7 +137,9 @@ export async function DeleteQuote(approved: boolean, client: Client){
                 {
                     name: client.customer,
                     phone: client.customerTel,
-                    email: client.customerEmail,
+                    email: client.customerTel,
+                    engine: client.template,
+                    addOns: client.addOns,
                     startUp: client.totalStartup,
                     recurring: client.totalMonthly,
                     clientSince: newDate

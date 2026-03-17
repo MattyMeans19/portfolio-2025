@@ -43,18 +43,20 @@ export type FormState =
 }
 
 export type Quote = {
-  client: string,
-  tel: string,
-  email: string,
-  engine: 'Business-Standard' | 'Business-Premium' | 'Restaurant-Standard' | 'Restaurant-Premium',
-  addons: number[],
+  customer: string;
+  customerTel: string;
+  customerEmail: string;
+  template: 'Business-Standard' | 'Business-Premium' | 'Restaurant-Standard' | 'Restaurant-Premium',
+  addOns: number[],
   totalStartup: number,
   totalMonthly: number,
   completionETA: number, 
   createdAt: string
 }
 
-
+export interface PendingQuote extends Quote {
+  id: number,
+}
 
 export type Addon = {
   id: number | null, 
@@ -87,4 +89,6 @@ export type Client = {
   totalStartup: number;
   totalMonthly: number;
   createdAt: string;
+  engine: 'Business-Standard' | 'Business-Premium' | 'Restaurant-Standard' | 'Restaurant-Premium';
+  addOns: number[];
 }

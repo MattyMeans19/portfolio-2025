@@ -19,6 +19,11 @@ export default async function CurrentClients(){
     return(
         <div className="grow flex flex-col">
             <DBNav />
+            {clients.map((client) => (
+                <div key={client.id}>
+                    <p>{client.name}</p>
+                </div>
+            ))}
         </div>
     )
 }

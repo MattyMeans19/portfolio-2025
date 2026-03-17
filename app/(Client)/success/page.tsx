@@ -16,7 +16,7 @@ export default async function Success() {
         where: eq(Quotes.id, parseInt(quoteId))
     });
 
-    if (!quoteData) return <div>Quote not found.</div>;
+    if (!quoteData) return <div className='grow content-center hero-bg text-center text-7xl'>Quote not found.</div>;
 
     return (
         <main className="grow p-8 hero-bg content-center">

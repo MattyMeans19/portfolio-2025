@@ -13,6 +13,7 @@ export const Quotes = pgTable("quotes", {
     addOns : integer('addons').array().notNull(),
     totalStartup: integer("total_startup").notNull(),
     totalMonthly: integer("total_monthly").notNull(),
+    completionETA: integer('time_to_build').notNull(),
     createdAt: date('created_at').notNull()
 })
 
@@ -21,6 +22,8 @@ export const Clients = pgTable("clients", {
     name: varchar('client_name', {length: 255}).notNull().unique(),
     phone: varchar('client_tel', {length: 15}).notNull(),
     email: varchar('client_email', {length: 255}).notNull().unique(),
+    engine: templateEnum('engine').default('Business-Standard').notNull(),
+    addOns : integer('addons').array().notNull(),
     startUp: integer('startup_cost').notNull(),
     recurring: integer('maintenence_cost').notNull(),
     clientSince: date('client_since').notNull()
