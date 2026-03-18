@@ -1,14 +1,16 @@
 import { defineConfig } from "drizzle-kit";
 
+// This manually appends the SSL requirement if it's missing
+const dbUrl = process.env.DATABASE_URL;
+const sslUrl = dbUrl && !dbUrl.includes("sslmode") 
+    ? `${dbUrl}${dbUrl.includes("?") ? "&" : "?"}sslmode=no-verify` 
+    : dbUrl;
+
 export default defineConfig({
   schema: "./db/schema.ts",
   out: "./drizzle",
   dialect: "postgresql",
   dbCredentials: {
-    url: process.env.DATABASE_URL!,
-    // Add this block specifically for Heroku/RDS connections
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    url: sslUrl!, // Use the forced SSL URL
   },
 });
