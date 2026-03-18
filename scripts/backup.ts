@@ -9,7 +9,7 @@ async function backup() {
     try {
         const data = {
             quotes: await db.select().from(schema.Quotes),
-            clients: await db.select().from(schema.client),
+            clients: await db.select().from(schema.Clients),
             issues: await db.select().from(schema.Issues),
             todos: await db.select().from(schema.ToDo),
             addons: await db.select().from(schema.AddOns),
