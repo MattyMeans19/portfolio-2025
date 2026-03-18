@@ -10,6 +10,7 @@ export default defineConfig({
   schema: "./db/schema.ts",
   out: "./drizzle",
   dialect: "postgresql",
+  tablesFilter: ["quotes", "clients", "issues", "to_do", "add_ons", "portfolio"],
   dbCredentials: {
     url: sslUrl!, // Use the forced SSL URL
   },
