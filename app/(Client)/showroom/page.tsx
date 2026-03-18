@@ -73,11 +73,12 @@ export default function Showroom() {
                         <h2 className="text-2xl font-bold mb-4 text-(--secondary) border-b pb-2">Important Notes</h2>
                         <ul className="space-y-4 list-disc pl-5 text-gray-700 text-sm md:text-base">
                             <li>Standard Templates only have <strong>One</strong> user (Admin). For multi-user, use <strong>Premium</strong>.</li>
-                            <li><strong>Admin Login:</strong> Admin | Admin123</li>
-                            <li><strong>Manager Login (Premium):</strong> Test_Manager | Manager123</li>
+                            <li><strong>Admin Login:</strong> User Name: Admin | Password: Admin123</li>
+                            <li><strong>Manager Login (Premium):</strong> User Name: Test_Manager | Password: Manager123</li>
                             <li><strong className="text-(--secondary)">Please DO NOT Change these Passwords. I can fix them, but at the inconvenience of myself and others!</strong></li>
                             <li><strong>Success Test Card:</strong> 4242 4242 4242 4242</li>
                             <li><strong>Decline Test Card:</strong> 4000 0000 0000 0032</li>
+                            <li>The Checkout screen uses my logo and color scheme for the Sandbox Environment. Upon setup you will have the option to customize your branding.</li>
                             <li className="font-bold">PC preview may not work properly on devices with smaller screens!</li>
                             <li className="italic text-xs">Please be respectful with the content you add to the live demos.</li>
                         </ul>

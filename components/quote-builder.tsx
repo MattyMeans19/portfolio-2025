@@ -92,7 +92,7 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
     
 
     return (
-        <div className="grow bg-slate-50 p-4 md:p-10 flex flex-col items-center gap-8 hero-bg">
+        <div className="grow p-4 md:p-10 flex flex-col items-center gap-8">
             {/* SECTION 1: CONTACT DETAILS */}
             <section className="w-full max-w-[80vw] bg-white rounded-3xl border border-slate-200 shadow-xl p-8">
                 <h2 className="text-3xl font-bold text-(--primary) mb-6 text-center text-shadow-md text-shadow-black underline decoration-wavy">Contact Details</h2>
