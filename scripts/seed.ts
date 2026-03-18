@@ -20,6 +20,7 @@ async function seed() {
             if (data.issues.length) await tx.insert(schema.Issues).values(data.issues);
             if (data.todos.length) await tx.insert(schema.ToDo).values(data.todos);
             if (data.addons.length) await tx.insert(schema.AddOns).values(data.addons);
+            if (data.portfolio.length) await tx.insert(schema.PorfolioItem).values(data.portfolio)
 
             // FIX SERIAL SEQUENCES
             // This ensures the next "ID" generated is higher than the ones we just seeded
@@ -28,7 +29,8 @@ async function seed() {
                 { name: 'clients', id: 'client_id' },
                 { name: 'issues', id: 'issue_id' },
                 { name: 'to_do', id: 'id' },
-                { name: 'add_ons', id: 'addon_id' }
+                { name: 'add_ons', id: 'addon_id' },
+                {name: 'portfolio', id: 'project_id'}
             ];
 
             for (const table of tables) {

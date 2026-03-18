@@ -2,13 +2,7 @@
   "quotes": [],
   "clients": [],
   "issues": [],
-  "todos": [
-    {
-      "id": 3,
-      "title": "Add Try/Catch",
-      "info": "Need to go back through all the templates and add try/catch blocks to db calls"
-    }
-  ],
+  "todos": [],
   "addons": [
     {
       "id": 2,
@@ -38,24 +32,6 @@
       "isPremium": true
     },
     {
-      "id": 7,
-      "name": "React Native App",
-      "info": "Custom app for mobile, tablet, and PC/Mac, that contains the Admin Portal for quick, on-the-go business management without the need for a web browser.",
-      "startUp": 75000,
-      "monthly": 10000,
-      "buildETA": 7,
-      "isPremium": false
-    },
-    {
-      "id": 8,
-      "name": "Built-in POS",
-      "info": "Custom Point-of-sales system designed for your business, available via Admin Portal or Custom App",
-      "startUp": 100000,
-      "monthly": 25000,
-      "buildETA": 10,
-      "isPremium": true
-    },
-    {
       "id": 9,
       "name": "Users +5",
       "info": "Adds additional users to the user limit for your Admin Portal up to 5",
@@ -81,7 +57,26 @@
       "monthly": 1500,
       "buildETA": 1,
       "isPremium": false
+    },
+    {
+      "id": 12,
+      "name": "Database Seeding",
+      "info": "With provided inventory information, I will create up to 50 inventory items directly into the database for you, saving you valuable time at start up!",
+      "startUp": 5000,
+      "monthly": 0,
+      "buildETA": 1,
+      "isPremium": false
     }
   ],
-  "updatedAt": "2026-03-15T06:35:19.703Z"
+  "portfolio": [
+    {
+      "id": 1,
+      "title": "All Keyboard Shortcuts",
+      "info": "A Front-End only webpage that has a list of common keyboard shortcuts for Windows and Mac Operating Systems and Apps. Uses React and TailwindCSS, with some javascript for functionality.",
+      "type": "Personal",
+      "thumbnail": "allkeyboardshortcuts_ir8qve",
+      "url": "https://allkeyboardshortcuts.info/"
+    }
+  ],
+  "updatedAt": "2026-03-18T06:33:04.853Z"
 }

@@ -13,6 +13,7 @@ async function backup() {
             issues: await db.select().from(schema.Issues),
             todos: await db.select().from(schema.ToDo),
             addons: await db.select().from(schema.AddOns),
+            portfolio: await db.select().from(schema.PorfolioItem),
             updatedAt: new Date().toISOString()
         };
 
