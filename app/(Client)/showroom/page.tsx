@@ -78,7 +78,8 @@ export default function Showroom() {
                             <li><strong className="text-(--secondary)">Please DO NOT Change these Passwords. I can fix them, but at the inconvenience of myself and others!</strong></li>
                             <li><strong>Success Test Card:</strong> 4242 4242 4242 4242</li>
                             <li><strong>Decline Test Card:</strong> 4000 0000 0000 0032</li>
-                            <li>The Checkout screen uses my logo and color scheme for the Sandbox Environment. Upon setup you will have the option to customize your branding.</li>
+                            <li>The Checkout screen uses my logo and color scheme for the Sandbox Environment. 
+                                Upon setup you will have the option to customize your branding. Tax can only be automated with an actual EIN (Employer Identification Number) and will <strong>NOT</strong> do so in the sandbox environment.</li>
                             <li className="font-bold">PC preview may not work properly on devices with smaller screens!</li>
                             <li className="italic text-xs">Please be respectful with the content you add to the live demos.</li>
                         </ul>
@@ -104,7 +105,7 @@ export default function Showroom() {
             </div>
 
             <div className="w-fit place-self-center text-4xl text-center p-2">
-                <p>Ready for a quote? Visit the <Link href={"/quote"} className="bg-(--primary) border rounded-2xl px-5">Quote Builder</Link></p>
+                <p>Ready for a quote? Visit the <Link href={"/quote"} className="text-(--primary) text-shadow-md text-shadow-black">Quote Builder</Link></p>
             </div>
         </div>
     )

@@ -18,7 +18,7 @@ const formatPhoneNumber = (value: string) => {
     return formatted;
 };
 
-export default function QuoteBuilder(props: { addons: Addon[] }) {
+export default function QuoteBuilder(props: { addons: Addon[] , clients: number}) {
     const [quote, UpdateQuote] = useState<Quote>({
         customer: "",
         customerTel: "",
@@ -149,9 +149,16 @@ export default function QuoteBuilder(props: { addons: Addon[] }) {
                     </div>
 
                     <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
-                        <span className="text-slate-500 font-medium">Starting Investment:</span>
+                        <span className="text-slate-500 font-medium">Starting Investment: 
+                            {props.clients <= 4 && <p className="text-sm">(25% off for the first 3 clients) 
+                                <br/>Normally <strong>${(quote.totalStartup / 100).toLocaleString()}</strong></p>}</span>
                         <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
-                            ${(quote.totalStartup / 100).toLocaleString()} + tax
+                            {props.clients <= 2 ?
+                                `$${((quote.totalStartup / 100) * 0.75).toLocaleString()} + tax`
+                            :
+                                `$${(quote.totalStartup / 100).toLocaleString()} + tax`
+                            }
+                            
                         </span>
                     </div>
                     <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">

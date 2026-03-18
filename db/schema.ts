@@ -56,9 +56,10 @@ export const AddOns = pgTable("add_ons", {
 })
 
 export const PorfolioItem = pgTable('portfolio', {
-    id: serial('addon_id').primaryKey(),
+    id: serial('project_id').primaryKey(),
     title: varchar('project_title').notNull().unique(),
     info: text('project_info').notNull(),
     type: projectEnum("project_type").default("Personal").notNull(),
+    thumbnail: varchar('project_image').notNull(),
     url: varchar('project_url').notNull().unique()
 })
