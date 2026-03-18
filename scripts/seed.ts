@@ -16,7 +16,7 @@ async function seed() {
         await db.transaction(async (tx) => {
             // Insert in order (careful of foreign keys if you add them later)
             if (data.quotes.length) await tx.insert(schema.Quotes).values(data.quotes);
-            if (data.clients.length) await tx.insert(schema.client).values(data.clients);
+            if (data.clients.length) await tx.insert(schema.Clients).values(data.clients);
             if (data.issues.length) await tx.insert(schema.Issues).values(data.issues);
             if (data.todos.length) await tx.insert(schema.ToDo).values(data.todos);
             if (data.addons.length) await tx.insert(schema.AddOns).values(data.addons);
