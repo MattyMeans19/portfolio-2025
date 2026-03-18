@@ -137,7 +137,7 @@ export async function DeleteQuote(approved: boolean, client: PendingQuote){
                 {
                     name: client.customer,
                     phone: client.customerTel,
-                    email: client.customerTel,
+                    email: client.customerEmail,
                     engine: client.template,
                     addOns: client.addOns,
                     startUp: client.totalStartup,

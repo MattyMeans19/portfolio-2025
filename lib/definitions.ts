@@ -92,3 +92,14 @@ export type Client = {
   engine: 'Business-Standard' | 'Business-Premium' | 'Restaurant-Standard' | 'Restaurant-Premium';
   addOns: number[];
 }
+
+export type Project = {
+  title: string,
+  info: string,
+  type: "Personal" | "Professional",
+  url: string
+}
+
+export interface ExistingProject extends Project{
+  id: number;
+}

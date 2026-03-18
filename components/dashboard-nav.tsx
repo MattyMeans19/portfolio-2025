@@ -7,7 +7,7 @@ export default function DBNav(){
     return(
         <div className="w-full flex flex-col items-center bg-(--primary) border-b-10 border-double pb-5 gap-10">
             <h1 className="text-5xl">Dashboard</h1>
-            <div className="w-full flex flex-wrap lg:flex-nowrap justify-around gap-5">
+            <div className="w-full flex flex-wrap lg:flex-nowrap justify-around gap-15 lg:gap-5">
                 <button className="bg-white text-2xl p-2 rounded-full border cursor-pointer"
                     onClick={() => Logout()}>
                     Logout
@@ -15,7 +15,6 @@ export default function DBNav(){
                 <Link href={"/admin/dashboard"} className="lg:text-2xl border-2 p-2 rounded-2xl bg-white cursor-pointer content-center">Dashboard</Link>
                 <Link href={"/admin/pending-quotes"} className="lg:text-2xl border-2 p-2 rounded-2xl bg-white cursor-pointer content-center">Pending Quotes</Link>
                 <Link href={"/admin/current-clients"} className="lg:text-2xl border-2 p-2 rounded-2xl bg-white cursor-pointer content-center">Current Clients</Link>
-                <Link href={"/admin/analytics"} className="lg:text-2xl border-2 p-2 rounded-2xl bg-white cursor-pointer content-center">Analytics</Link>
             </div>
             
         </div>

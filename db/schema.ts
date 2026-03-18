@@ -3,6 +3,8 @@ import { integer, pgTableCreator, varchar, boolean, text, doublePrecision, pgEnu
 export const pgTable = pgTableCreator((name) => `${name}`);
 export const templateEnum = pgEnum('template', ['Business-Standard', 'Business-Premium', 'Restaurant-Standard', 'Restaurant-Premium']);
 export type Template = (typeof templateEnum.enumValues)[number];
+export const projectEnum = pgEnum('project', ['Professional', 'Personal']);
+export type Project = (typeof projectEnum.enumValues)[number];
 
 export const Quotes = pgTable("quotes", {
     id: serial('quote_id').primaryKey(),
@@ -51,4 +53,12 @@ export const AddOns = pgTable("add_ons", {
     monthly: integer('monthly').notNull(),
     buildETA: integer('build_time').notNull(),
     isPremium: boolean('is_premium').notNull()
+})
+
+export const PorfolioItem = pgTable('portfolio', {
+    id: serial('addon_id').primaryKey(),
+    title: varchar('project_title').notNull().unique(),
+    info: text('project_info').notNull(),
+    type: projectEnum("project_type").default("Personal").notNull(),
+    url: varchar('project_url').notNull().unique()
 })
