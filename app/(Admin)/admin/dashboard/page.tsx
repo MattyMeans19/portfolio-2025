@@ -27,9 +27,7 @@ export default async function DashBoard(){
         <div className="flex flex-col w-full h-full">
             <DBNav />
             <div className="grow p-5 lg:p-20 flex flex-col lg:grid grid-cols-2 gap-15">
-                <ToDoList list={toDoItems}/>
-                <AddonList list={availableAddons}/>
-                <div className="border-5 col-start-1 col-span-full h-fit row-start-3 border-double text-5xl flex flex-col gap-10">
+                <div className="border-5 col-start-1 col-span-full h-fit row-start-1 border-double text-2xl lg:text-5xl flex flex-col lg:flex-nowrap lg:flex-row justify-around gap-10">
                    <p className="text-center content-center">
                         <strong className="text-(--secondary)">{quotes.length} </strong> 
                         Quote(s) are waiting for your review.
@@ -38,6 +36,8 @@ export default async function DashBoard(){
                         issues reported this month.
                    </p>
                 </div>
+                <ToDoList list={toDoItems}/>
+                <AddonList list={availableAddons}/>
                 <AddonCreator />
             </div>
         </div>
