@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`flex flex-col w-screen h-screen ${anta.variable} font-serif`}>
+      <body className={`flex flex-col max-w-screen min-h-screen ${anta.variable} font-serif`}>
         {children}
       </body>
     </html>

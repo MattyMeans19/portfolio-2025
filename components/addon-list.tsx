@@ -21,7 +21,7 @@ export default function AddonList(availableAddons: AddonList){
     }
 
     return(
-        <div className="row-start-2 col-span-full grid grid-cols-2 lg:grid-cols-4 h-[40vh] lg:max-h-[50%] gap-10 overflow-y-scroll">
+        <div className="row-start-2 col-span-full grid grid-cols-2 lg:grid-cols-4 h-[40vh] lg:h-fit gap-10 overflow-y-scroll">
             <h1 className="col-span-full text-center text-4xl underline font-bold">Available Addons</h1>
             {availableAddons.list.map((addon) => (
                 <div key={addon.id} className="text-xl text-center border border-(--primary) rounded-2xl bg-slate-200">

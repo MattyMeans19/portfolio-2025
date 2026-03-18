@@ -2,17 +2,20 @@ import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import * as schema from "./schema";
 
-// This ensures we don't create a new pool every time Next.js hot-reloads
 const globalForDb = global as unknown as { pool: Pool };
 
+const isProduction = process.env.NODE_ENV === "production";
+console.log("DEBUG: NODE_ENV is", process.env.NODE_ENV);
 const pool = globalForDb.pool || new Pool({
   connectionString: process.env.DATABASE_URL,
-  // Force SSL for Heroku/RDS
-  ssl: {
-    rejectUnauthorized: false, // This bypasses the "self-signed certificate" error
-  },
+  // Completely omit the ssl key if not in production
+  ...(isProduction && {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  }),
 });
 
-if (process.env.NODE_ENV !== "production") globalForDb.pool = pool;
+if (!isProduction) globalForDb.pool = pool;
 
 export const db = drizzle(pool, { schema });

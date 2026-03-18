@@ -28,15 +28,15 @@ export default function Admin(){
     }
 
     return(
-        <div className="w-full h-full bg-(--primary) place-items-center flex flex-col justify-around">
+        <div className="grow w-full h-full bg-(--primary) place-items-center flex flex-col justify-around">
             <Image
                 src={MyLogo}
                 alt="My Logo"
                 width={800}
                 height={800}
-                className="size-100 rounded-full"
+                className="size-50 rounded-full"
             />
-            <div className="flex flex-col p-20 border-5 rounded-3xl gap-20 w-[50vw] bg-green-500">
+            <div className="flex flex-col p-10 border-5 rounded-3xl gap-20 w-[90vw] lg:w-[50vw] bg-green-500">
                 <input type="text" id="username" placeholder="User Name" autoComplete="off" onChange={(e) => (setLogin({...login, username: e.target.value}))}
                 className="bg-white border pl-10 text-3xl"/>
                 <input type="password" id="paswword" placeholder="Password" onChange={(e) => (setLogin({...login, password: e.target.value}))}

@@ -26,10 +26,10 @@ export default async function DashBoard(){
     return(
         <div className="flex flex-col w-full h-full">
             <DBNav />
-            <div className="grow lg:p-20 flex flex-col lg:grid grid-cols-2 gap-5">
+            <div className="grow p-5 lg:p-20 flex flex-col lg:grid grid-cols-2 gap-15">
                 <ToDoList list={toDoItems}/>
                 <AddonList list={availableAddons}/>
-                <div className="border-5 col-start-1 col-span-full h-fit row-start-2 self-end border-double text-5xl flex flex-col gap-10">
+                <div className="border-5 col-start-1 col-span-full h-fit row-start-3 border-double text-5xl flex flex-col gap-10">
                    <p className="text-center content-center">
                         <strong className="text-(--secondary)">{quotes.length} </strong> 
                         Quote(s) are waiting for your review.
