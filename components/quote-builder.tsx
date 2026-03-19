@@ -94,7 +94,7 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
 
     return (
         <div className="grow p-4 mt-20 md:p-10 flex flex-col items-center gap-8">
-            <div className="w-full px-40 flex flex-col gap-10">
+            <div className="w-full md:px-40 flex flex-col gap-10">
                 <Link href={"/"} className="text-primary">⬅ Back to Home</Link>
                 <h1 className="text-4xl boldText-primary">Build Your Project Quote</h1>
                 <p className="text-secondary">Select a base engine, choose your add-ons, and get an instant estimate.</p>    
@@ -151,39 +151,39 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
                     <div className="bg-slate-50 rounded-2xl p-6 border-l-8 border-(--secondary)">
                         <p className="text-lg leading-relaxed">
                             Included in this build: <br/>
-                            <span className="font-bold text-(--secondary) text-xl">{engineDetails.included}</span>
+                            <span className="font-bold text-(--secondary) md:text-xl">{engineDetails.included}</span>
                         </p>
                     </div>
 
-                    <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
-                        <span className="text-slate-400 font-medium">Starting Investment: 
+                    <div className="quote-price-column">
+                        <span className="quote-price-info">Starting Investment: 
                             {props.clients <= 4 && <p className="text-sm">(25% off for the first 3 clients) 
-                                <br/>Normally <strong>${(quote.totalStartup / 100).toLocaleString()}</strong></p>}</span>
-                        <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
+                                <br/>Normally <strong>${(quote.totalStartup / 100).toFixed(2)}</strong></p>}</span>
+                        <span className="quote-price-text">
                             {props.clients <= 2 ?
-                                `$${((quote.totalStartup / 100) * 0.75).toLocaleString()} + tax`
+                                `$${((quote.totalStartup / 100) * 0.75).toFixed(2)} + tax`
                             :
-                                `$${(quote.totalStartup / 100).toLocaleString()} + tax`
+                                `$${(quote.totalStartup / 100).toFixed(2)} + tax`
                             }
                             
                         </span>
                     </div>
-                    <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
-                        <span className="text-slate-400 font-medium">Monthly Fees:</span>
-                        <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
-                            ${(quote.totalMonthly / 100).toLocaleString()} + tax
+                    <div className="quote-price-column">
+                        <span className="quote-price-info">Monthly Fees:</span>
+                        <span className="quote-price-text">
+                            ${(quote.totalMonthly / 100).toFixed(2)} + tax
                         </span>
                     </div>
-                    <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
-                        <span className="text-slate-400 font-medium">Build Time:</span>
-                        <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
+                    <div className="quote-price-column">
+                        <span className="quote-price-info">Build Time:</span>
+                        <span className="quote-price-text">
                             {quote.completionETA} Days
                         </span>
                     </div>
                 </div>
 
                 {/* Right: Add-ons Scrollable List */}
-                <div className="lg:col-span-5 bg-(--secondary) rounded-3xl border border-slate-200 shadow-xl flex flex-col overflow-hidden md:max-h-[70vh] xlg:max-h-[50vh]">
+                <div className="lg:col-span-5 bg-(--secondary) rounded-3xl border border-slate-200 self-center flex flex-col overflow-hidden md:max-h-[70vh] xlg:h-[70vh]">
                     <div className="p-6 border-b border-slate-200">
                         <h3 className="text-xl text-(--primary) text-shadow-md text-shadow-black font-bold text-center">Available Add-Ons</h3>
                     </div>

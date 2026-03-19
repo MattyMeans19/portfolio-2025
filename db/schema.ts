@@ -55,7 +55,7 @@ export const AddOns = pgTable("add_ons", {
     isPremium: boolean('is_premium').notNull()
 })
 
-export const PorfolioItem = pgTable('portfolio', {
+export const PortfolioItem = pgTable('portfolio', {
     id: serial('project_id').primaryKey(),
     title: varchar('project_title').notNull().unique(),
     info: text('project_info').notNull(),

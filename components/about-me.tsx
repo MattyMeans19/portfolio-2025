@@ -3,7 +3,6 @@ export default function About(){
     return(
         <div className="grow hero-bg p-5 ">
             <div className="flex flex-col place-items-center gap-4">
-                <h3 className="section-title boldText-primary w-full">About Me</h3>
                 <div className="text-secondary lg:grid grid-cols-2 gap-5">
                     <p>My name is Matthew Means — Matt for short. I have an extensive background in the tech industry, starting back in high school with 3D animation and robotics.</p>
                     <p>Now I'm fully focused on web development, building performant and reliable applications. In my spare time I write code for video games and pursue my passion for music and writing.</p>

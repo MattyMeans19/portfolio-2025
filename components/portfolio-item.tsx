@@ -52,40 +52,54 @@ export default function Project({ sites }: SitesProps) {
                     </h1>
                 </div>
             ) : (
-                <section className="h-full overflow-y-scroll">
+                <section className="overflow-y-scroll inner-scrollbar h-[800px] py-10 lg:grid grid-cols-2">
                     {projectList.map((site) => (
-                        <div key={site.id} className="">
-                            <div className="flex flex-col ">
-                                <h2 className="text-2xl font-bold text-gray-900 ">
-                                    {site.title}
-                                </h2>
-                                <a 
-                                    href={site.url} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    className="text-sky-600 hover:underline font-medium text-lg"
-                                >
-                                    <strong className="text-black">Site URL: </strong>{site.url.replace(/^https?:\/\//, '')} {/* Cleans URL for display */}
-                                </a>
-                                <p className="text-gray-600 text-base leading-relaxed max-w-prose">
-                                    {site.info}
-                                </p>
-                            </div>
+                        <div 
+                        key={site.id} 
+                        className="flex flex-col items-center text-center mb-16 mx-auto 
+                        w-80 border border-(--tertiary) p-2 rounded-3xl"
+                        >
+                        {/* Text Content Wrapper */}
+                        <div className="flex flex-col items-center mb-4 w-full">
+                            <h2 className="text-2xl font-bold boldText-primary">
+                            {site.title}
+                            </h2>
+                            <a 
+                            href={site.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-(--secondary) hover:underline font-medium text-sm break-all mb-2"
+                            >
+                            <strong className="text-(--primary)">Site URL: </strong>
+                            {site.url.replace(/^https?:\/\//, '')}
+                            </a>
+                            <p className="text-(--tertiary) text-base leading-relaxed">
+                            {site.info}
+                            </p>
+                        </div>
 
-                            <div>
-                                <CldImage
-                                    src={site.thumbnail}
-                                    width={1701}
-                                    height={1347}
-                                    alt={`${site.title} Preview`}
-                                    className="size-80"
-                                />
-                            </div>
-                            <div>
-                                {site.stack.map((item, index) =>(
-                                    <p key={index}>{item}</p>
-                                ))}
-                            </div>
+                        {/* Image Wrapper */}
+                        <div className="rounded-lg overflow-hidden border border-(--primary)">
+                            <CldImage
+                            src={site.thumbnail}
+                            width={1701}
+                            height={1347}
+                            alt={`${site.title} Preview`}
+                            className="size-80 object-cover"
+                            />
+                        </div>
+
+                        {/* Tech Stack Tags */}
+                        <div className="flex flex-wrap justify-center gap-2 mt-4">
+                            {site.stack.map((item, index) => (
+                            <span 
+                                key={index} 
+                                className="px-3 py-1 bg-(--secondary) text-white text-xs font-semibold rounded-full"
+                            >
+                                {item}
+                            </span>
+                            ))}
+                        </div>
                         </div>    
                     ))}
                 </section>

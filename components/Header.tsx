@@ -12,13 +12,7 @@ export default function Header(){
         <div className="border-b-2 border-(--tertiary) z-10 w-full fixed top-0 bg-(--background)/50 backdrop-blur-md">
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
-                <Image 
-                        src="/BrandTag.png"
-                        alt="Matthew Means Brand Tag"
-                        height={50}
-                        width={50}
-                        className="rounded-full z-50"
-                />
+                <a className="boldText-secondary" href="/"><strong className="boldText-primary">M</strong>M.</a>
                 <nav className="w-full z-50">
                     <ul className="flex gap-4 p-4 place-content-end">
                     {navLinks.map((link) => (
@@ -32,7 +26,7 @@ export default function Header(){
                         </li>
                     ))}
                     <li>
-                        <Link href={"/quote"} className="text-2xl bg-(--primary) p-1 rounded-full">
+                        <Link href={"/quote"} className="lg:text-2xl bg-(--primary) p-1 rounded-full">
                         Quote
                         </Link>
                     </li>

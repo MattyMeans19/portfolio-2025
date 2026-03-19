@@ -8,7 +8,7 @@ export default function Contact(){
     const [emailState, formAction] = useActionState(Email, undefined)
 
     return(
-        <div className="grow w-full p-10 place-content-center space-y-10">
+        <div className="grow w-full p-10 lg:place-content-center space-y-10">
             <p className="text-center text-3xl text-(--secondary)">Feel free to contact me anytime!</p>
             <form action={formAction} className="mx-auto grid w-full grid-cols-1 gap-4 rounded-lg border bg-(--secondary) p-6 sm:grid-cols-2">
                 <div className="md:col-span-2">

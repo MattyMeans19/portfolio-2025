@@ -2,7 +2,7 @@
 @import "tailwindcss-animated";
 
 :root {
-  --background: #010801;
+  --background: #000f00;
   --foreground: #171717;
   --primary: #85EB81;
   --primary-dark: #599E57;
@@ -50,6 +50,9 @@
 .boldText-secondary{
   @apply text-(--secondary) text-shadow-md text-shadow-slate-400;
 }
+.content-section{
+  @apply w-full lg:w-[70vw] scroll-m-15;
+}
 .section-title{
   @apply font-medium text-3xl;
 }
@@ -75,3 +78,19 @@
  .contact-input {
   @apply mt-1 w-full rounded-lg bg-white p-2 focus:border-indigo-500 focus:outline;
  }
+
+ .quote-price-text {
+  @apply text-lg md:text-3xl font-black text-(--primary) text-shadow-md text-shadow-black;
+ }
+ .quote-price-info {
+  @apply text-slate-400 font-medium;
+ }
+
+.quote-price-column {
+  @apply mt-auto pt-6 border-t border-slate-100 flex justify-between items-center gap-5;
+}
+
+ .inner-scrollbar {
+  scrollbar-width: 8px;
+  scrollbar-color: var(--primary) transparent;
+}

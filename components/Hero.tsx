@@ -8,8 +8,8 @@ export default function Hero(){
                     <span className="bg-(--primary) inline-block h-2 w-2 rounded-full animate-pulse self-center"></span>
                     <p className="boldText-primary text-2xl">Available for new projects!</p>
                 </div>
-            <h1 className="text-8xl boldText-primary">Matthew Means</h1>
-            <h2 className="text-6xl boldText-secondary">Full-Stack Developer</h2>
+            <h1 className="text-6xl lg:text-8xl boldText-primary">Matthew Means</h1>
+            <h2 className="text-4xl lg:text-6xl boldText-secondary">Full-Stack Developer</h2>
 
             <p className="mt-4 text-base text-pretty text-(--tertiary) sm:text-lg/relaxed lg:text-2xl">
                 I deliver seamless digital solutions from database to 

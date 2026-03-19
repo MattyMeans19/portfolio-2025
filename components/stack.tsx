@@ -1,7 +1,7 @@
 
 export default function Stack(){
     return(
-        <div className="w-full flex flex-col lg:grid grid-cols-3 p-5">
+        <div className="w-full flex flex-col pl-20 lg:pl-0 items-start md:grid grid-cols-3 p-5">
             <div className="stack">
                 <h1 className="stack-title">Languages</h1>
                 <ul className="stack-item">
