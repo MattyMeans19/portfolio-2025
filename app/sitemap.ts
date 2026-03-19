@@ -6,11 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // These represent the folders inside your (Client) group
   const clientRoutes = [
     '',           // This is the page.tsx directly under (Client)
-    '/about',
-    '/contact',
-    '/portfolio',
     '/quote',
-    '/showroom',
   ]
 
   const sitemapEntries = clientRoutes.map((route) => ({
