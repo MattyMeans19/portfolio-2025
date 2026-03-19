@@ -2,13 +2,13 @@
 @import "tailwindcss-animated";
 
 :root {
-  --background: #ffffff;
+  --background: #010801;
   --foreground: #171717;
-  --primary: #12FF36;
-  --primary-dark: #27FF12;
-  --secondary: #FF931C;
-  --secondary-dark: #FF6800;
-  --tertiary: #7D746A;
+  --primary: #85EB81;
+  --primary-dark: #599E57;
+  --secondary: #4c5e4b;
+  --secondary-dark: #6DC06A;
+  --tertiary: #646664;
 }
 
 .anta-regular {
@@ -17,20 +17,13 @@
   font-style: normal;
 }
 
-.hero-bg {
-    background: linear-gradient(143deg, #27ff12, #ff931c);
-    background-size: 400% 400%;
-
-    animation: AnimationName 15s ease infinite;
-}
-
 @keyframes AnimationName {
     0%{background-position:14% 0%}
     50%{background-position:87% 100%}
     100%{background-position:14% 0%}
 }
 
-.logo1{
+/* .logo1{
   @apply animate-wiggle-more animate-infinite animate-normal place-self-center;
 }
 .logo2{
@@ -41,27 +34,44 @@
 }
 .logo4{
   @apply animate-wiggle-more animate-infinite animate-alternate-reverse place-self-center;
+} */
+.CustomBG {
+  @apply bg-(--background);
 }
-
-.fade-left{
-  @apply animate-fade-left animate-once animate-duration-1500 animate-ease-out;
+.text-primary{
+  @apply text-(--primary) lg:text-2xl;
 }
-
-.fade-right{
-  @apply animate-fade-right animate-once animate-duration-1500 animate-ease-out;
+.text-secondary{
+  @apply text-(--secondary) lg:text-2xl;
 }
-
 .boldText-primary{
-  @apply text-(--primary) text-shadow-md text-shadow-black;
+  @apply text-(--primary) text-shadow-md text-shadow-slate-400;
 }
 .boldText-secondary{
-  @apply text-(--secondary) text-shadow-md text-shadow-black;
+  @apply text-(--secondary) text-shadow-md text-shadow-slate-400;
+}
+.section-title{
+  @apply font-medium text-3xl;
 }
 
 .boxShadow{
   @apply shadow-2xl shadow-slate-700 ;
 }
 
-.showroomButton{
-  @apply rounded-3xl border border-(--tertiary) text-2xl font-bold p-2 cursor-pointer;
+.stack {
+  @apply flex flex-col gap-2;
 }
+.stack-title {
+  @apply text-3xl underline text-(--primary);
+}
+.stack-item {
+  @apply text-(--tertiary) lg:text-2xl;
+ }
+
+ .contact-label {
+  @apply block text-sm lg:text-2xl font-medium text-gray-900;
+ }
+
+ .contact-input {
+  @apply mt-1 w-full rounded-lg bg-white p-2 focus:border-indigo-500 focus:outline;
+ }

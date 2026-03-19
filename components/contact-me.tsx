@@ -8,42 +8,42 @@ export default function Contact(){
     const [emailState, formAction] = useActionState(Email, undefined)
 
     return(
-        <div className="grow hero-bg place-content-center space-y-10">
-            <p className="text-center text-3xl boldText-secondary">Feel free to contact me anytime!</p>
-            <form action={formAction} className="mx-auto grid max-w-2xl grid-cols-1 gap-4 rounded-lg border border-gray-300 bg-gray-100 p-6 sm:grid-cols-2 boxShadow">
+        <div className="grow w-full p-10 place-content-center space-y-10">
+            <p className="text-center text-3xl text-(--secondary)">Feel free to contact me anytime!</p>
+            <form action={formAction} className="mx-auto grid w-full grid-cols-1 gap-4 rounded-lg border bg-(--secondary) p-6 sm:grid-cols-2">
                 <div className="md:col-span-2">
-                    <label className="block text-sm lg:text-2xl font-medium text-gray-900" htmlFor="name">
+                    <label className="contact-label" htmlFor="name">
                         Name<strong className="text-red-600 text-sm">*</strong></label>
 
-                    <input className="mt-1 w-full rounded-lg bg-white p-2 focus:border-indigo-500 focus:outline" 
+                    <input className="contact-input" 
                     id="name" name="name" type="text" placeholder="Your name" required/>
                 </div>
 
                 <div>
-                    <label className="block text-sm lg:text-2xl font-medium text-gray-900" htmlFor="email">
+                    <label className="contact-label" htmlFor="email">
                         Email<strong className="text-red-600 text-sm">*</strong></label>
 
-                    <input className="mt-1 w-full rounded-lg bg-white p-2 focus:border-indigo-500 focus:outline" 
+                    <input className="contact-input" 
                     id="email" name="email" type="email" placeholder="Your email" required/>
                 </div>
 
                 <div>
-                    <label className="block text-sm lg:text-2xl font-medium text-gray-900" htmlFor="phone">Phone</label>
+                    <label className="contact-label" htmlFor="phone">Phone</label>
 
-                    <input className="mt-1 w-full rounded-lg bg-white p-2 focus:border-indigo-500 focus:outline" 
+                    <input className="contact-input" 
                     id="phone" name="phone" type="tel" placeholder="Your phone"/>
                 </div>
 
                 <div className="md:col-span-2">
-                    <label className="block text-sm lg:text-2xl font-medium text-gray-900" htmlFor="message">
+                    <label className="contact-label" htmlFor="message">
                         Message<strong className="text-red-600 text-sm">*</strong></label>
 
-                    <textarea className="mt-1 w-full resize-none rounded-lg bg-white p-2 focus:border-indigo-500" 
+                    <textarea className="contact-input" 
                     id="message" name="message" rows={4} placeholder="Your message" required></textarea>
                 </div>
 
                 <div className="md:col-span-2">
-                    <button className="block w-full rounded-lg border border-(--tertiary) bg-(--primary) px-12 py-3 
+                    <button className="block w-full rounded-lg bg-(--tertiary) px-12 py-3 
                     text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-(--primary)" type="submit">
                     Send Message
                     </button>

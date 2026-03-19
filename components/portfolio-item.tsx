@@ -21,7 +21,7 @@ export default function Project({ sites }: SitesProps) {
         <div className="grow flex flex-col px-4 md:px-8">
             {/* Cleaner Segmented Toggle */}
             <div className="w-full flex justify-center mb-16">
-                <div className="inline-flex p-1 bg-gray-100 rounded-xl border border-gray-200 shadow-sm">
+                <div className="inline-flex p-1 bg-(--secondary) rounded-xl border border-gray-200 shadow-sm">
                     <button 
                         className={`px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-200 ${
                             currentFilter === "Personal" 
@@ -46,40 +46,45 @@ export default function Project({ sites }: SitesProps) {
             </div>
             
             {projectList.length === 0 ? (
-                <div className="grow flex items-center justify-center min-h-[300px] bg-white rounded-3xl border-2 border-dashed border-gray-200">
-                    <h1 className="text-gray-400 text-4xl font-bold italic">
+                <div className="grow flex items-center justify-center h-[40vh]">
+                    <h1 className="text-gray-400 text-4xl h-full font-bold italic">
                         Nothing here yet!
                     </h1>
                 </div>
             ) : (
-                <section className="bg-white rounded-3xl border border-(--tertiary) boxShadow divide-y divide-gray-100">
+                <section className="h-full overflow-y-scroll">
                     {projectList.map((site) => (
-                        <div key={site.id} className="px-6 py-16 md:grid md:grid-cols-2 md:items-center md:gap-12 lg:px-12">
-                            <div className="flex flex-col gap-6 text-center md:text-left items-center md:items-start">
-                                <h2 className="text-3xl font-bold text-gray-900 lg:text-5xl">
+                        <div key={site.id} className="">
+                            <div className="flex flex-col ">
+                                <h2 className="text-2xl font-bold text-gray-900 ">
                                     {site.title}
                                 </h2>
                                 <a 
                                     href={site.url} 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
-                                    className="text-sky-600 hover:underline font-medium text-lg lg:text-xl"
+                                    className="text-sky-600 hover:underline font-medium text-lg"
                                 >
                                     <strong className="text-black">Site URL: </strong>{site.url.replace(/^https?:\/\//, '')} {/* Cleans URL for display */}
                                 </a>
-                                <p className="text-gray-600 text-base leading-relaxed lg:text-2xl max-w-prose">
+                                <p className="text-gray-600 text-base leading-relaxed max-w-prose">
                                     {site.info}
                                 </p>
                             </div>
 
-                            <div className="mt-10 md:mt-0 overflow-hidden rounded-2xl shadow-lg border border-gray-100">
+                            <div>
                                 <CldImage
                                     src={site.thumbnail}
                                     width={1701}
                                     height={1347}
                                     alt={`${site.title} Preview`}
-                                    className="w-full h-auto object-cover"
+                                    className="size-80"
                                 />
+                            </div>
+                            <div>
+                                {site.stack.map((item, index) =>(
+                                    <p key={index}>{item}</p>
+                                ))}
                             </div>
                         </div>    
                     ))}

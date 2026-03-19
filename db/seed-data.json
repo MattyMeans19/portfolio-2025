@@ -5,7 +5,7 @@
   "todos": [],
   "addons": [
     {
-      "id": 2,
+      "id": 1,
       "name": "Custom Not Found(404) Page",
       "info": "A Custom Not-Found page for invalid page redirects or non-existent URLs that boosts branding and professionalism.",
       "startUp": 20000,
@@ -14,7 +14,7 @@
       "isPremium": false
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Non-Stripe Payment",
       "info": "You'll need this if you want to integrate any current payment provider you already have, like Square, Authorize.net, etc. *Listed Start-up cost is a minimum, can increase depending on provider*",
       "startUp": 50000,
@@ -23,7 +23,7 @@
       "isPremium": true
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "Delivery Logic",
       "info": "Adds delivery options for online purchases, includes distance/radius validation.\n*Will require Google Maps API setup",
       "startUp": 40000,
@@ -32,7 +32,7 @@
       "isPremium": true
     },
     {
-      "id": 9,
+      "id": 4,
       "name": "Users +5",
       "info": "Adds additional users to the user limit for your Admin Portal up to 5",
       "startUp": 2500,
@@ -41,7 +41,7 @@
       "isPremium": false
     },
     {
-      "id": 10,
+      "id": 5,
       "name": "Users +10",
       "info": "Adds additional users to the user limit for your Admin Portal up to 10",
       "startUp": 2500,
@@ -50,7 +50,7 @@
       "isPremium": false
     },
     {
-      "id": 11,
+      "id": 6,
       "name": "Users +15",
       "info": "Adds additional users to the user limit for your Admin Portal up to 15",
       "startUp": 2500,
@@ -59,7 +59,7 @@
       "isPremium": false
     },
     {
-      "id": 12,
+      "id": 7,
       "name": "Database Seeding",
       "info": "With provided inventory information, I will create up to 50 inventory items directly into the database for you, saving you valuable time at start up!",
       "startUp": 5000,
@@ -75,7 +75,8 @@
       "info": "A Front-End only webpage that has a list of common keyboard shortcuts for Windows and Mac Operating Systems and Apps. Uses React and TailwindCSS, with some javascript for functionality.",
       "type": "Personal",
       "thumbnail": "allkeyboardshortcuts_ir8qve",
-      "url": "https://allkeyboardshortcuts.info/"
+      "url": "https://allkeyboardshortcuts.info/",
+      "stack": ["React", "TailwindCSS", "JavaScript"]
     }
   ],
   "updatedAt": "2026-03-18T06:33:04.853Z"

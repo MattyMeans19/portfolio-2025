@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth CustomBG">
       <body className={`flex flex-col max-w-screen min-h-screen ${anta.variable} font-serif`}>
         <Header />
         {children}

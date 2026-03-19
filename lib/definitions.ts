@@ -98,7 +98,8 @@ export type Project = {
   info: string,
   type: "Personal" | "Professional",
   url: string,
-  thumbnail: string
+  thumbnail: string,
+  stack: string[],
 }
 
 export interface ExistingProject extends Project{

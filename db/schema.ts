@@ -61,5 +61,6 @@ export const PorfolioItem = pgTable('portfolio', {
     info: text('project_info').notNull(),
     type: projectEnum("project_type").default("Personal").notNull(),
     thumbnail: varchar('project_image').notNull(),
-    url: varchar('project_url').notNull().unique()
+    url: varchar('project_url').notNull().unique(),
+    stack: varchar('stack_items').array().notNull()
 })

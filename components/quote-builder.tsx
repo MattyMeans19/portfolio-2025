@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { EngineDetails } from "@/lib/quote";
 import { NewQuote } from "@/app/(Admin)/actions";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 const formatPhoneNumber = (value: string) => {
     // Strip all non-digits
@@ -92,28 +93,34 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
     
 
     return (
-        <div className="grow p-4 md:p-10 flex flex-col items-center gap-8">
+        <div className="grow p-4 mt-20 md:p-10 flex flex-col items-center gap-8">
+            <div className="w-full px-40 flex flex-col gap-10">
+                <Link href={"/"} className="text-primary">⬅ Back to Home</Link>
+                <h1 className="text-4xl boldText-primary">Build Your Project Quote</h1>
+                <p className="text-secondary">Select a base engine, choose your add-ons, and get an instant estimate.</p>    
+            </div>
+            
             {/* SECTION 1: CONTACT DETAILS */}
-            <section className="w-full max-w-[80vw] bg-white rounded-3xl border border-slate-200 shadow-xl p-8">
-                <h2 className="text-3xl font-bold text-(--primary) mb-6 text-center text-shadow-md text-shadow-black underline decoration-wavy">Contact Details</h2>
+            <section className="w-full max-w-[80vw] rounded-3xl border border-slate-200 bg-(--secondary) p-8">
+                <h2 className="text-3xl boldText-primary mb-6 text-center">Contact Details</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="clientName" className="font-semibold text-slate-700">Client / Business Name</label>
-                        <input type="text" id="clientName" placeholder="John Doe" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
+                        <label htmlFor="clientName" className="contact-label">Client / Business Name</label>
+                        <input type="text" id="clientName" placeholder="John Doe" className="contact-input"
                             onChange={(e) => (UpdateQuote({...quote, customer: e.target.value}))}/>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="clientTel" className="font-semibold text-slate-700">Phone Number</label>
+                        <label htmlFor="clientTel" className="contact-label">Phone Number</label>
                         <input type="tel" id="clientTel" placeholder="505-555-5555" maxLength={12} value={quote.customerTel}
-                            className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
+                            className="contact-input"
                             onChange={(e) => {
                                 const formatted = formatPhoneNumber(e.target.value);
                                 UpdateQuote({...quote, customerTel: formatted})
                             }}/>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="clientEmail" className="font-semibold text-slate-700">Email Address</label>
-                        <input type="email" id="clientEmail" placeholder="matt@example.com" className="border-2 border-slate-200 rounded-xl p-3 focus:border-(--primary) outline-none transition-all"
+                        <label htmlFor="clientEmail" className="contact-label">Email Address</label>
+                        <input type="email" id="clientEmail" placeholder="matt@example.com" className="contact-input"
                             onChange={(e) => (UpdateQuote({...quote, customerEmail: e.target.value}))}/>
                     </div>
                 </div>
@@ -123,7 +130,7 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
             <section className="w-full max-w-[80vw] grid grid-cols-1 lg:grid-cols-12 gap-6 h-fit">
                 
                 {/* Left: Engine Selection */}
-                <div className="lg:col-span-7 bg-white rounded-3xl border border-slate-200 shadow-xl p-8 flex flex-col gap-6">
+                <div className="lg:col-span-7 bg-(--secondary) rounded-3xl border border-slate-200 p-8 flex flex-col gap-6">
                     <div>
                         <label htmlFor="engine" className="block text-2xl font-bold text-(--primary) text-shadow-md text-shadow-black mb-4">Base Engine</label>
                         <select 
@@ -149,7 +156,7 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
                     </div>
 
                     <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
-                        <span className="text-slate-500 font-medium">Starting Investment: 
+                        <span className="text-slate-400 font-medium">Starting Investment: 
                             {props.clients <= 4 && <p className="text-sm">(25% off for the first 3 clients) 
                                 <br/>Normally <strong>${(quote.totalStartup / 100).toLocaleString()}</strong></p>}</span>
                         <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
@@ -162,13 +169,13 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
                         </span>
                     </div>
                     <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
-                        <span className="text-slate-500 font-medium">Monthly Fees:</span>
+                        <span className="text-slate-400 font-medium">Monthly Fees:</span>
                         <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
                             ${(quote.totalMonthly / 100).toLocaleString()} + tax
                         </span>
                     </div>
                     <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
-                        <span className="text-slate-500 font-medium">Build Time:</span>
+                        <span className="text-slate-400 font-medium">Build Time:</span>
                         <span className="text-3xl font-black text-(--primary) text-shadow-md text-shadow-black">
                             {quote.completionETA} Days
                         </span>
@@ -176,8 +183,8 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
                 </div>
 
                 {/* Right: Add-ons Scrollable List */}
-                <div className="lg:col-span-5 bg-white rounded-3xl border border-slate-200 shadow-xl flex flex-col overflow-hidden md:max-h-[70vh] xlg:max-h-[50vh]">
-                    <div className="p-6 bg-slate-50 border-b border-slate-200">
+                <div className="lg:col-span-5 bg-(--secondary) rounded-3xl border border-slate-200 shadow-xl flex flex-col overflow-hidden md:max-h-[70vh] xlg:max-h-[50vh]">
+                    <div className="p-6 border-b border-slate-200">
                         <h3 className="text-xl text-(--primary) text-shadow-md text-shadow-black font-bold text-center">Available Add-Ons</h3>
                     </div>
                     
@@ -187,15 +194,15 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
                                 ${quote.addOns.includes(addon.id) && "bg-(--primary)"} transition-all shadow-sm`}
                                 onClick={() => addOnClicked(addon)}>
                                 <h4 className="font-bold text-lg text-(--primary) text-shadow-md text-shadow-black group-hover:underline">{addon.name}</h4>
-                                <p className="text-sm text-slate-600 mb-2 line-clamp-2">{addon.info}</p>
+                                <p className="text-md text-black mb-2 line-clamp-2">{addon.info}</p>
                                 <div className="flex justify-between items-end">
                                     <div className="text-xs font-bold text-slate-400">
                                         +{addon.buildETA} Days
                                     </div>
                                     <div className="text-right">
                                         <p className="underline text-slate-400">Add-on Price</p>
-                                        <p className="font-bold text-(--secondary)">+${(addon.startUp / 100).toFixed(0)} at Start-Up</p>
-                                        <p className="font-bold text-(--secondary)">+${(addon.monthly / 100).toFixed(0)} additional per month</p>
+                                        <p className="font-bold text-(--primary)">+${(addon.startUp / 100).toFixed(0)} at Start-Up</p>
+                                        <p className="font-bold text-(--primary)">+${(addon.monthly / 100).toFixed(0)} additional per month</p>
                                     </div>
                                 </div>
                             </button>
