@@ -97,7 +97,8 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
             <div className="w-full md:px-40 flex flex-col gap-10">
                 <Link href={"/"} className="text-primary">⬅ Back to Home</Link>
                 <h1 className="text-4xl boldText-primary">Build Your Project Quote</h1>
-                <p className="text-secondary">Select a base engine, choose your add-ons, and get an instant estimate.</p>    
+                <p className="text-secondary">Select a base engine, choose your add-ons, and get an instant estimate.</p>
+                <p className="text-(--secondary)"><strong className="boldText-primary">*</strong>Estimates are for 4 specific builds. Minimum and maximum depend greatly on your specific needs.</p>  
             </div>
             
             {/* SECTION 1: CONTACT DETAILS */}
