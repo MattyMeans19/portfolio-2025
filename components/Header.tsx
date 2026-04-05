@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function Header(){
     const navLinks = [
-        { name: "About", href: "#about" },
-        { name: "Work", href: "#work" },
-        { name: "Stack", href: "#stack"},
-        { name: "Contact", href: "#contact" }
+        { name: "About", href: "/#about" },
+        { name: "Work", href: "/#work" },
+        { name: "Stack", href: "/#stack"},
+        { name: "Contact", href: "/#contact" }
     ];
     return(
         <div className="border-b-2 border-(--tertiary) z-10 w-full fixed top-0 bg-(--background)/50 backdrop-blur-md">
