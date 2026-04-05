@@ -52,57 +52,59 @@ export default function Project({ sites }: SitesProps) {
                     </h1>
                 </div>
             ) : (
-                <section className="overflow-y-scroll inner-scrollbar h-[800px] py-10 lg:grid grid-cols-2">
-                    {projectList.map((site) => (
-                        <div 
-                        key={site.id} 
-                        className="flex flex-col items-center text-center mb-16 mx-auto 
-                        w-80 border border-(--tertiary) p-2 rounded-3xl"
+            <section className="overflow-y-scroll inner-scrollbar h-[800px] py-10 lg:grid grid-cols-2 gap-x-5 gap-y-16">
+                {projectList.map((site) => (
+                    <div
+                    key={site.id}
+                    className="grid grid-rows-[auto_1fr_auto] gap-4 border border-(--tertiary) p-6 rounded-3xl"
+                    >
+                    {/* 1. Text Section - Forced to the top */}
+                    <div className="flex flex-col items-center text-center">
+                        <h2 className="text-2xl font-bold boldText-primary mb-2">
+                        {site.title}
+                        </h2>
+                        <a
+                        href={site.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-(--secondary) hover:underline font-medium text-sm break-all mb-4"
                         >
-                        {/* Text Content Wrapper */}
-                        <div className="flex flex-col items-center mb-4 w-full">
-                            <h2 className="text-2xl font-bold boldText-primary">
-                            {site.title}
-                            </h2>
-                            <a 
-                            href={site.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="text-(--secondary) hover:underline font-medium text-sm break-all mb-2"
-                            >
-                            <strong className="text-(--primary)">Site URL: </strong>
-                            {site.url.replace(/^https?:\/\//, '')}
-                            </a>
-                            <p className="text-(--tertiary) text-base leading-relaxed">
-                            {site.info}
-                            </p>
-                        </div>
+                        <strong className="text-(--primary)">Site URL: </strong>
+                        {site.url.replace(/^https?:\/\//, "")}
+                        </a>
+                        {/* We use line-clamp to ensure the text doesn't explode the height */}
+                        <p className="text-(--tertiary) text-base leading-relaxed line-clamp-3">
+                        {site.info}
+                        </p>
+                    </div>
 
-                        {/* Image Wrapper */}
-                        <div className="rounded-lg overflow-hidden border border-(--primary)">
-                            <CldImage
+                    {/* 2. Image Section - Centered in the 1fr middle row */}
+                    <div className="flex items-center justify-center">
+                        <div className="rounded-lg overflow-hidden border border-(--primary) shrink-0">
+                        <CldImage
                             src={site.thumbnail}
                             width={1701}
                             height={1347}
                             alt={`${site.title} Preview`}
                             className="size-80 object-cover"
-                            />
+                        />
                         </div>
+                    </div>
 
-                        {/* Tech Stack Tags */}
-                        <div className="flex flex-wrap justify-center gap-2 mt-4">
-                            {site.stack.map((item, index) => (
-                            <span 
-                                key={index} 
-                                className="px-3 py-1 bg-(--secondary) text-white text-xs font-semibold rounded-full"
-                            >
-                                {item}
-                            </span>
-                            ))}
-                        </div>
-                        </div>    
-                    ))}
-                </section>
+                    {/* 3. Tech Stack Section - Forced to the bottom */}
+                    <div className="flex flex-wrap justify-center gap-2 mt-auto">
+                        {site.stack.map((item, index) => (
+                        <span
+                            key={index}
+                            className="px-3 py-1 bg-(--secondary) text-white text-xs font-semibold rounded-full"
+                        >
+                            {item}
+                        </span>
+                        ))}
+                    </div>
+                    </div>
+                ))}
+            </section>
             )}
         </div>
     )

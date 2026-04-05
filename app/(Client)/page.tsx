@@ -5,6 +5,7 @@ import Project from "@/components/portfolio-item";
 import Stack from "@/components/stack";
 import { db } from "@/db"
 import { PortfolioItem } from "@/db/schema"
+import Link from "next/link";
 
 export default async function Home() {
       const projects = await db.select().from(PortfolioItem);
@@ -27,6 +28,7 @@ export default async function Home() {
       <section id="contact" className="content-section">
         <h1 className="section-title boldText-primary">Contact</h1>
         <Contact />
+        <p className="text-secondary text-center text-3xl mb-5">Or get a <Link href={"/quote"} className="boldText-primary">Quote</Link> based on some standard builds!</p>
       </section>
     </div>
   );
