@@ -26,8 +26,8 @@ export default function QuoteBuilder(props: { addons: Addon[] , clients: number}
         customerEmail: "",
         template: "Business-Standard",
         addOns: [],
-        totalStartup: 49999,
-        totalMonthly: 9999,
+        totalStartup: 29999,
+        totalMonthly: 4999,
         completionETA: 7,
         createdAt: ""
     });
