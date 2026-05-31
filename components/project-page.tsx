@@ -34,7 +34,7 @@ export default function Project({ project }: { project: ExistingProject }) {
           </div>
 
             <div className="space-y-6">
-              <p className="text-xl lg:text-2xl leading-relaxed text-(--tertiary)">{project.info}</p>
+              <p className="text-xl lg:text-2xl leading-relaxed text-(--tertiary) text-center">{project.info}</p>
 
               <div className="flex flex-wrap gap-3 justify-center">
                 {project.stack.map((tech, index) => (
