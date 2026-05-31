@@ -42,57 +42,6 @@ export type FormState =
   expiresAt: Date
 }
 
-export type Quote = {
-  customer: string;
-  customerTel: string;
-  customerEmail: string;
-  template: 'Business-Standard' | 'Business-Premium' | 'Restaurant-Standard' | 'Restaurant-Premium',
-  addOns: number[],
-  totalStartup: number,
-  totalMonthly: number,
-  completionETA: number, 
-  createdAt: string
-}
-
-export interface PendingQuote extends Quote {
-  id: number,
-}
-
-export type Addon = {
-  id: number | null, 
-  name: string,
-  info: string, 
-  startUp: number,
-  monthly: number,
-  buildETA: number,
-  isPremium: boolean
-}
-
-export type Engine ={
-    name: string,
-    startupPrice: number,
-    monthlyPrice: number,
-    included: string
-}
-
-export type ToDoItem = {
-  id: number, 
-  title: string,
-  info: string
-}
-
-export type Client = {
-  id: number;
-  customer: string;
-  customerTel: string;
-  customerEmail: string;
-  totalStartup: number;
-  totalMonthly: number;
-  createdAt: string;
-  engine: 'Business-Standard' | 'Business-Premium' | 'Restaurant-Standard' | 'Restaurant-Premium';
-  addOns: number[];
-}
-
 export type Project = {
   title: string,
   info: string,
@@ -100,6 +49,7 @@ export type Project = {
   url: string,
   thumbnail: string,
   stack: string[],
+  caseStudy: string
 }
 
 export interface ExistingProject extends Project{

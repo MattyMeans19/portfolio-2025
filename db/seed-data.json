@@ -1,82 +1,14 @@
 {
-  "quotes": [],
-  "clients": [],
-  "issues": [],
-  "todos": [],
-  "addons": [
-    {
-      "id": 1,
-      "name": "Custom Not Found(404) Page",
-      "info": "A Custom Not-Found page for invalid page redirects or non-existent URLs that boosts branding and professionalism.",
-      "startUp": 20000,
-      "monthly": 0,
-      "buildETA": 1,
-      "isPremium": false
-    },
-    {
-      "id": 2,
-      "name": "Non-Stripe Payment",
-      "info": "You'll need this if you want to integrate any current payment provider you already have, like Square, Authorize.net, etc. *Listed Start-up cost is a minimum, can increase depending on provider*",
-      "startUp": 50000,
-      "monthly": 0,
-      "buildETA": 7,
-      "isPremium": true
-    },
-    {
-      "id": 3,
-      "name": "Delivery Logic",
-      "info": "Adds delivery options for online purchases, includes distance/radius validation.\n*Will require Google Maps API setup",
-      "startUp": 40000,
-      "monthly": 0,
-      "buildETA": 7,
-      "isPremium": true
-    },
-    {
-      "id": 4,
-      "name": "Users +5",
-      "info": "Adds additional users to the user limit for your Admin Portal up to 5",
-      "startUp": 2500,
-      "monthly": 500,
-      "buildETA": 1,
-      "isPremium": false
-    },
-    {
-      "id": 5,
-      "name": "Users +10",
-      "info": "Adds additional users to the user limit for your Admin Portal up to 10",
-      "startUp": 2500,
-      "monthly": 1000,
-      "buildETA": 1,
-      "isPremium": false
-    },
-    {
-      "id": 6,
-      "name": "Users +15",
-      "info": "Adds additional users to the user limit for your Admin Portal up to 15",
-      "startUp": 2500,
-      "monthly": 1500,
-      "buildETA": 1,
-      "isPremium": false
-    },
-    {
-      "id": 7,
-      "name": "Database Seeding",
-      "info": "With provided inventory information, I will create up to 50 inventory items directly into the database for you, saving you valuable time at start up!",
-      "startUp": 5000,
-      "monthly": 0,
-      "buildETA": 1,
-      "isPremium": false
-    }
-  ],
   "portfolio": [
     {
       "id": 1,
-      "title": "All Keyboard Shortcuts",
+      "title": "All-Keyboard-Shortcuts",
       "info": "A Front-End only webpage that has a list of common keyboard shortcuts for Windows and Mac Operating Systems and Apps. Uses React and TailwindCSS, with some javascript for functionality.",
       "type": "Personal",
       "thumbnail": "allkeyboardshortcuts_ir8qve",
       "url": "https://allkeyboardshortcuts.info/",
-      "stack": ["React", "TailwindCSS", "JavaScript"]
+      "stack": ["React", "TailwindCSS", "JavaScript"],
+      "caseStudy": "This project was a fun way to practice my React and Tailwind skills, while also creating something that I personally wanted to use. I wanted to create a resource that would be helpful for people who are looking for keyboard shortcuts, and I thought it would be a good way to practice my front-end development skills. I used React to build the user interface and TailwindCSS for styling. The JavaScript was used to handle the functionality of switching between Windows and Mac shortcuts. Overall, it was a great project to work on and I'm happy with how it turned out."
     }
   ],
   "updatedAt": "2026-03-18T06:33:04.853Z"

@@ -57,6 +57,9 @@ export default function Stack(){
                     <li>
                         Drizzle
                     </li>
+                    <li>
+                        Stripe
+                    </li>
                 </ul>
             </div>
         </div>

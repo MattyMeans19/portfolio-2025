@@ -15,21 +15,11 @@ async function seed() {
 
         await db.transaction(async (tx) => {
             // Insert in order (careful of foreign keys if you add them later)
-            if (data.quotes.length) await tx.insert(schema.Quotes).values(data.quotes);
-            if (data.clients.length) await tx.insert(schema.Clients).values(data.clients);
-            if (data.issues.length) await tx.insert(schema.Issues).values(data.issues);
-            if (data.todos.length) await tx.insert(schema.ToDo).values(data.todos);
-            if (data.addons.length) await tx.insert(schema.AddOns).values(data.addons);
             if (data.portfolio.length) await tx.insert(schema.PortfolioItem).values(data.portfolio)
 
             // FIX SERIAL SEQUENCES
             // This ensures the next "ID" generated is higher than the ones we just seeded
             const tables = [
-                { name: 'quotes', id: 'quote_id' },
-                { name: 'clients', id: 'client_id' },
-                { name: 'issues', id: 'issue_id' },
-                { name: 'to_do', id: 'id' },
-                { name: 'add_ons', id: 'addon_id' },
                 { name: 'portfolio', id: 'project_id'}
             ];
 

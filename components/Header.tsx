@@ -25,11 +25,6 @@ export default function Header(){
                         </a>
                         </li>
                     ))}
-                    <li>
-                        <Link href={"/quote"} className="lg:text-2xl bg-(--primary) p-1 rounded-full">
-                        Quote
-                        </Link>
-                    </li>
                     </ul>
                 </nav>
                 </div>

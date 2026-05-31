@@ -9,7 +9,7 @@ export default function Contact(){
 
     return(
         <div className="grow w-full p-10 lg:place-content-center space-y-10">
-            <p className="text-center text-3xl text-(--secondary)">Feel free to contact me anytime!</p>
+            <p className="text-center text-3xl text-(--secondary)">Feel free to contact me anytime for a quote or more information!</p>
             <form action={formAction} className="mx-auto grid w-full grid-cols-1 gap-4 rounded-lg border bg-(--secondary) p-6 sm:grid-cols-2">
                 <div className="md:col-span-2">
                     <label className="contact-label" htmlFor="name">
