@@ -60,6 +60,15 @@ export default function Stack(){
                     <li>
                         Stripe
                     </li>
+                    <li>
+                        Vercel
+                    </li>
+                    <li>
+                        Railway
+                    </li>
+                    <li>
+                        Supabase
+                    </li>
                 </ul>
             </div>
         </div>
