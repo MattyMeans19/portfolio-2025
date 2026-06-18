@@ -69,6 +69,9 @@ export default function Stack(){
                     <li>
                         Supabase
                     </li>
+                    <li>
+                        Vite
+                    </li>
                 </ul>
             </div>
         </div>
